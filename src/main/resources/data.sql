@@ -4,3 +4,9 @@ INSERT INTO institution  (name, description) VALUES ('Fundacja “Dla dzieci"', 
 INSERT INTO institution  (name, description) VALUES ('Fundacja “Bez domu”', 'Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania');
 INSERT INTO donation (quantity) VALUES ('5');
 INSERT INTO donation (quantity) VALUES ('15');
+
+INSERT INTO category (name) VALUES ('ubrania, które nadają się do ponownego użycia');
+INSERT INTO category (name) VALUES ('ubrania do wyrzucenia');
+INSERT INTO category (name) VALUES ('książki');
+INSERT INTO category (name) VALUES ('zabawki');
+INSERT INTO category (name) VALUES ('inne');
