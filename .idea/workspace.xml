@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24125afa-1a3d-4266-bfdb-e800f5511657" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/category/CategoryConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/donation/DonationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/institution/InstitutionConverter.java" afterDir="false" />
+    <list default="true" id="24125afa-1a3d-4266-bfdb-e800f5511657" name="Default Changelist" comment="Add form for adding donation">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Donation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Donation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form-confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form-confirmation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,14 +76,21 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Thymeleaf" />
         <option value="Class" />
+        <option value="Thymeleaf" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -181,7 +185,9 @@
       <option name="presentableId" value="Default" />
       <updated>1608361696286</updated>
       <workItem from="1608361702018" duration="12358000" />
-      <workItem from="1608375353095" duration="9121000" />
+      <workItem from="1608375353095" duration="9681000" />
+      <workItem from="1608448124810" duration="3382000" />
+      <workItem from="1608465558932" duration="280000" />
     </task>
     <task id="LOCAL-00001" summary="Change jsp to thymeleaf">
       <created>1608365103661</created>
@@ -232,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608376650955</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add form for adding donation">
+      <created>1608391659908</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1608391659908</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +259,8 @@
     <MESSAGE value="Add list of all institutions for landing page" />
     <MESSAGE value="Add total number of all donation bags for landing page" />
     <MESSAGE value="Add total number of all donations for landing page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add total number of all donations for landing page" />
+    <MESSAGE value="Add form for adding donation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add form for adding donation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="428" y="124" width="800" height="677" key="#SQL_Dialects" timestamp="1608369362927">
@@ -257,53 +271,57 @@
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="428" y="124" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1533.873@67.27.1533.873" timestamp="1608362026800" />
-    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2" timestamp="1608376650862">
+    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2" timestamp="1608449680172">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2/67.27.1533.873@67.27.1533.873" timestamp="1608376650862" />
-    <state width="1487" height="150" key="GridCell.Tab.0.bottom" timestamp="1608391513569">
+    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2/67.27.1533.873@67.27.1533.873" timestamp="1608449680172" />
+    <state width="1487" height="194" key="GridCell.Tab.0.bottom" timestamp="1608457740518">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="150" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1608391513569" />
-    <state width="1487" height="150" key="GridCell.Tab.0.center" timestamp="1608391513568">
+    <state width="1487" height="194" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1608457740518" />
+    <state width="1487" height="194" key="GridCell.Tab.0.center" timestamp="1608457740517">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="150" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1608391513568" />
-    <state width="1487" height="150" key="GridCell.Tab.0.left" timestamp="1608391513568">
+    <state width="1487" height="194" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1608457740517" />
+    <state width="1487" height="194" key="GridCell.Tab.0.left" timestamp="1608457740517">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="150" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1608391513568" />
-    <state width="1487" height="150" key="GridCell.Tab.0.right" timestamp="1608391513568">
+    <state width="1487" height="194" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1608457740517" />
+    <state width="1487" height="194" key="GridCell.Tab.0.right" timestamp="1608457740518">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="150" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1608391513568" />
-    <state width="1487" height="150" key="GridCell.Tab.1.bottom" timestamp="1608391513569">
+    <state width="1487" height="194" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1608457740518" />
+    <state width="1487" height="194" key="GridCell.Tab.1.bottom" timestamp="1608457740519">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="150" key="GridCell.Tab.1.bottom/67.27.1533.873@67.27.1533.873" timestamp="1608391513569" />
-    <state width="1487" height="150" key="GridCell.Tab.1.center" timestamp="1608391513569">
+    <state width="1487" height="194" key="GridCell.Tab.1.bottom/67.27.1533.873@67.27.1533.873" timestamp="1608457740519" />
+    <state width="1487" height="194" key="GridCell.Tab.1.center" timestamp="1608457740519">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="150" key="GridCell.Tab.1.center/67.27.1533.873@67.27.1533.873" timestamp="1608391513569" />
-    <state width="1487" height="150" key="GridCell.Tab.1.left" timestamp="1608391513569">
+    <state width="1487" height="194" key="GridCell.Tab.1.center/67.27.1533.873@67.27.1533.873" timestamp="1608457740519" />
+    <state width="1487" height="194" key="GridCell.Tab.1.left" timestamp="1608457740518">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="150" key="GridCell.Tab.1.left/67.27.1533.873@67.27.1533.873" timestamp="1608391513569" />
-    <state width="1487" height="150" key="GridCell.Tab.1.right" timestamp="1608391513569">
+    <state width="1487" height="194" key="GridCell.Tab.1.left/67.27.1533.873@67.27.1533.873" timestamp="1608457740518" />
+    <state width="1487" height="194" key="GridCell.Tab.1.right" timestamp="1608457740519">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="150" key="GridCell.Tab.1.right/67.27.1533.873@67.27.1533.873" timestamp="1608391513569" />
+    <state width="1487" height="194" key="GridCell.Tab.1.right/67.27.1533.873@67.27.1533.873" timestamp="1608457740519" />
     <state x="550" y="155" width="556" height="614" key="RollbackChangesDialog" timestamp="1608377344378">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="550" y="155" width="556" height="614" key="RollbackChangesDialog/67.27.1533.873@67.27.1533.873" timestamp="1608377344378" />
-    <state x="489" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1608375547357">
+    <state x="489" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1608465856030">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state x="489" y="290" key="com.intellij.ide.util.TipDialog/67.27.1533.873@67.27.1533.873" timestamp="1608375547357" />
+    <state x="489" y="290" key="com.intellij.ide.util.TipDialog/67.27.1533.873@67.27.1533.873" timestamp="1608465856030" />
     <state x="601" y="382" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608363251381">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="601" y="382" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1533.873@67.27.1533.873" timestamp="1608363251381" />
+    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup" timestamp="1608449901254">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup/67.27.1533.873@67.27.1533.873" timestamp="1608449901254" />
   </component>
 </project>
