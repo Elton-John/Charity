@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24125afa-1a3d-4266-bfdb-e800f5511657" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_extras_thymeleaf_extras_springsecurity5_3_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navigation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/admin/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charity.iml" beforeDir="false" afterPath="$PROJECT_DIR$/charity.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form-confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form-confirmation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +202,7 @@
       <workItem from="1608375353095" duration="9681000" />
       <workItem from="1608448124810" duration="3382000" />
       <workItem from="1608465558932" duration="10811000" />
-      <workItem from="1609055669330" duration="8849000" />
+      <workItem from="1609055669330" duration="12630000" />
     </task>
     <task id="LOCAL-00001" summary="Change jsp to thymeleaf">
       <created>1608365103661</created>
@@ -284,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609062561356</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add paths.">
+      <created>1609066192225</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1609066192225</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,7 +306,8 @@
     <MESSAGE value="Change paths in html. Add footer to fragments." />
     <MESSAGE value="Start security. Add registration." />
     <MESSAGE value="Add login and logout actions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add login and logout actions." />
+    <MESSAGE value="Add paths." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add paths." />
   </component>
   <component name="WindowStateProjectService">
     <state x="428" y="124" width="800" height="677" key="#SQL_Dialects" timestamp="1608369362927">
@@ -313,42 +318,42 @@
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="428" y="124" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1533.873@67.27.1533.873" timestamp="1608362026800" />
-    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2" timestamp="1609062559716">
+    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2" timestamp="1609066191946">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2/67.27.1533.873@67.27.1533.873" timestamp="1609062559716" />
-    <state width="1487" height="77" key="GridCell.Tab.0.bottom" timestamp="1609066041659">
+    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2/67.27.1533.873@67.27.1533.873" timestamp="1609066191946" />
+    <state width="1487" height="143" key="GridCell.Tab.0.bottom" timestamp="1609071002780">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="77" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1609066041659" />
-    <state width="1487" height="77" key="GridCell.Tab.0.center" timestamp="1609066041659">
+    <state width="1487" height="143" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1609071002780" />
+    <state width="1487" height="143" key="GridCell.Tab.0.center" timestamp="1609071002780">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="77" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1609066041659" />
-    <state width="1487" height="77" key="GridCell.Tab.0.left" timestamp="1609066041659">
+    <state width="1487" height="143" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1609071002780" />
+    <state width="1487" height="143" key="GridCell.Tab.0.left" timestamp="1609071002779">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="77" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1609066041659" />
-    <state width="1487" height="77" key="GridCell.Tab.0.right" timestamp="1609066041659">
+    <state width="1487" height="143" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1609071002779" />
+    <state width="1487" height="143" key="GridCell.Tab.0.right" timestamp="1609071002780">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="77" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1609066041659" />
-    <state width="1487" height="77" key="GridCell.Tab.1.bottom" timestamp="1609066041660">
+    <state width="1487" height="143" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1609071002780" />
+    <state width="1487" height="143" key="GridCell.Tab.1.bottom" timestamp="1609071002781">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="77" key="GridCell.Tab.1.bottom/67.27.1533.873@67.27.1533.873" timestamp="1609066041660" />
-    <state width="1487" height="77" key="GridCell.Tab.1.center" timestamp="1609066041660">
+    <state width="1487" height="143" key="GridCell.Tab.1.bottom/67.27.1533.873@67.27.1533.873" timestamp="1609071002781" />
+    <state width="1487" height="143" key="GridCell.Tab.1.center" timestamp="1609071002781">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="77" key="GridCell.Tab.1.center/67.27.1533.873@67.27.1533.873" timestamp="1609066041660" />
-    <state width="1487" height="77" key="GridCell.Tab.1.left" timestamp="1609066041660">
+    <state width="1487" height="143" key="GridCell.Tab.1.center/67.27.1533.873@67.27.1533.873" timestamp="1609071002781" />
+    <state width="1487" height="143" key="GridCell.Tab.1.left" timestamp="1609071002781">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="77" key="GridCell.Tab.1.left/67.27.1533.873@67.27.1533.873" timestamp="1609066041660" />
-    <state width="1487" height="77" key="GridCell.Tab.1.right" timestamp="1609066041660">
+    <state width="1487" height="143" key="GridCell.Tab.1.left/67.27.1533.873@67.27.1533.873" timestamp="1609071002781" />
+    <state width="1487" height="143" key="GridCell.Tab.1.right" timestamp="1609071002781">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="77" key="GridCell.Tab.1.right/67.27.1533.873@67.27.1533.873" timestamp="1609066041660" />
+    <state width="1487" height="143" key="GridCell.Tab.1.right/67.27.1533.873@67.27.1533.873" timestamp="1609071002781" />
     <state x="550" y="155" width="556" height="614" key="RollbackChangesDialog" timestamp="1608377344378">
       <screen x="67" y="27" width="1533" height="873" />
     </state>

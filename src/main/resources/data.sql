@@ -11,4 +11,5 @@ INSERT INTO category (name) VALUES ('książki');
 INSERT INTO category (name) VALUES ('zabawki');
 INSERT INTO category (name) VALUES ('inne');
 
-INSERT INTO role (id,name) VALUES (NULL,'ROLE_USER');
+INSERT INTO role (id,name) VALUES (1, 'ROLE_USER'), (2, 'ROLE_ADMIN');
+INSERT INTO user_role (user_id, role_id)  VALUES (1, 2);

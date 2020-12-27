@@ -8,9 +8,11 @@
     <link rel="stylesheet" th:href="@{~/css/style.css}"/>
 </head>
 <body>
-<header  class="header--main-page">
+<header class="header--main-page">
     <nav class="container container--70">
-
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <a th:href="@{/admin}" class="btn btn--small btn--highlighted">Panel administratora</a>
+        </div>
         <ul class="nav--actions" th:unless="${#authorization.expression('isAuthenticated()')}">
             <li><a th:href="@{/login}" class="btn btn--small btn--without-border">Zaloguj</a></li>
             <li><a th:href="@{/register}" class="btn btn--small btn--highlighted">Załóż konto</a></li>
@@ -19,7 +21,9 @@
     </nav>
 
     <div class="slogan container container--90">
+
         <div class="slogan--item">
+
             <h1>
                 Zacznij pomagać!<br/>
                 Oddaj niechciane rzeczy w zaufane ręce
