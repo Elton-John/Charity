@@ -16,21 +16,6 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class UserController {
     private final UserService userService;
-//    public UserController(UserService userService) {
-//        this.userService = userService;
-//    }
-
-//    @GetMapping("/create-user")
-//    @ResponseBody
-//    public String createUser() {
-//        User user = new User();
-//        user.setUsername("admin");
-//        user.setPassword("admin");
-//        userService.saveUser(user);
-//        return "admin";
-//    }
-
-
 
 
     @GetMapping("/register")
@@ -41,13 +26,11 @@ public class UserController {
 
     @PostMapping("/register")
     public String saveNewUser(@ModelAttribute("newUser") @Valid User user, BindingResult result, Model model) {
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "register";
-        }
-
-        else {
+        } else {
             User byUserName = userService.findByUserName(user.getUsername());
-            if(byUserName!=null){
+            if (byUserName != null) {
                 model.addAttribute("errorMessage", "użytkownik z taką nazwą już istnieje");
                 return "login";
             }

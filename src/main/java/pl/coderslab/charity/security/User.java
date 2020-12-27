@@ -15,7 +15,9 @@ public class User {
     private Long id;
     @Column(nullable = false, unique = true, length = 60)
     private String username;
+ //   private String surname;
     private String password;
+//    private String email;
     private int enabled;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role"

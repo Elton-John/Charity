@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24125afa-1a3d-4266-bfdb-e800f5511657" name="Default Changelist" comment="Add form for adding donation">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" afterDir="false" />
+    <list default="true" id="24125afa-1a3d-4266-bfdb-e800f5511657" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_1_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_1_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_1_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_1_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c135fb72-a695-4940-b585-cd708cd09e99.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c135fb72-a695-4940-b585-cd708cd09e99.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form-confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form-confirmation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/login/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,14 +77,28 @@
         <item name="charity_donation: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="institution: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="charity_donation@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="charity_donation: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="role: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="charity_donation@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="charity_donation: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="user: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Thymeleaf" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -187,7 +208,8 @@
       <workItem from="1608361702018" duration="12358000" />
       <workItem from="1608375353095" duration="9681000" />
       <workItem from="1608448124810" duration="3382000" />
-      <workItem from="1608465558932" duration="280000" />
+      <workItem from="1608465558932" duration="10811000" />
+      <workItem from="1609055669330" duration="5164000" />
     </task>
     <task id="LOCAL-00001" summary="Change jsp to thymeleaf">
       <created>1608365103661</created>
@@ -245,7 +267,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608391659908</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Change paths in html. Add footer to fragments.">
+      <created>1608465930747</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1608465930747</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Start security. Add registration.">
+      <created>1608479606775</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1608479606775</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,7 +296,9 @@
     <MESSAGE value="Add total number of all donation bags for landing page" />
     <MESSAGE value="Add total number of all donations for landing page" />
     <MESSAGE value="Add form for adding donation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add form for adding donation" />
+    <MESSAGE value="Change paths in html. Add footer to fragments." />
+    <MESSAGE value="Start security. Add registration." />
+    <option name="LAST_COMMIT_MESSAGE" value="Start security. Add registration." />
   </component>
   <component name="WindowStateProjectService">
     <state x="428" y="124" width="800" height="677" key="#SQL_Dialects" timestamp="1608369362927">
@@ -271,42 +309,42 @@
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="428" y="124" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1533.873@67.27.1533.873" timestamp="1608362026800" />
-    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2" timestamp="1608449680172">
+    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2" timestamp="1608479606198">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2/67.27.1533.873@67.27.1533.873" timestamp="1608449680172" />
-    <state width="1487" height="194" key="GridCell.Tab.0.bottom" timestamp="1608457740518">
+    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2/67.27.1533.873@67.27.1533.873" timestamp="1608479606198" />
+    <state width="1487" height="77" key="GridCell.Tab.0.bottom" timestamp="1609062180369">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="194" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1608457740518" />
-    <state width="1487" height="194" key="GridCell.Tab.0.center" timestamp="1608457740517">
+    <state width="1487" height="77" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1609062180369" />
+    <state width="1487" height="77" key="GridCell.Tab.0.center" timestamp="1609062180368">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="194" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1608457740517" />
-    <state width="1487" height="194" key="GridCell.Tab.0.left" timestamp="1608457740517">
+    <state width="1487" height="77" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1609062180368" />
+    <state width="1487" height="77" key="GridCell.Tab.0.left" timestamp="1609062180368">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="194" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1608457740517" />
-    <state width="1487" height="194" key="GridCell.Tab.0.right" timestamp="1608457740518">
+    <state width="1487" height="77" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1609062180368" />
+    <state width="1487" height="77" key="GridCell.Tab.0.right" timestamp="1609062180368">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="194" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1608457740518" />
-    <state width="1487" height="194" key="GridCell.Tab.1.bottom" timestamp="1608457740519">
+    <state width="1487" height="77" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1609062180368" />
+    <state width="1487" height="77" key="GridCell.Tab.1.bottom" timestamp="1609062180369">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="194" key="GridCell.Tab.1.bottom/67.27.1533.873@67.27.1533.873" timestamp="1608457740519" />
-    <state width="1487" height="194" key="GridCell.Tab.1.center" timestamp="1608457740519">
+    <state width="1487" height="77" key="GridCell.Tab.1.bottom/67.27.1533.873@67.27.1533.873" timestamp="1609062180369" />
+    <state width="1487" height="77" key="GridCell.Tab.1.center" timestamp="1609062180369">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="194" key="GridCell.Tab.1.center/67.27.1533.873@67.27.1533.873" timestamp="1608457740519" />
-    <state width="1487" height="194" key="GridCell.Tab.1.left" timestamp="1608457740518">
+    <state width="1487" height="77" key="GridCell.Tab.1.center/67.27.1533.873@67.27.1533.873" timestamp="1609062180369" />
+    <state width="1487" height="77" key="GridCell.Tab.1.left" timestamp="1609062180369">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="194" key="GridCell.Tab.1.left/67.27.1533.873@67.27.1533.873" timestamp="1608457740518" />
-    <state width="1487" height="194" key="GridCell.Tab.1.right" timestamp="1608457740519">
+    <state width="1487" height="77" key="GridCell.Tab.1.left/67.27.1533.873@67.27.1533.873" timestamp="1609062180369" />
+    <state width="1487" height="77" key="GridCell.Tab.1.right" timestamp="1609062180369">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="194" key="GridCell.Tab.1.right/67.27.1533.873@67.27.1533.873" timestamp="1608457740519" />
+    <state width="1487" height="77" key="GridCell.Tab.1.right/67.27.1533.873@67.27.1533.873" timestamp="1609062180369" />
     <state x="550" y="155" width="556" height="614" key="RollbackChangesDialog" timestamp="1608377344378">
       <screen x="67" y="27" width="1533" height="873" />
     </state>

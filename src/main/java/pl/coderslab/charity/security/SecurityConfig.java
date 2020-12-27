@@ -2,7 +2,6 @@ package pl.coderslab.charity.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -21,21 +20,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new SpringDataUserDetailsService();
     }
 
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user").password("{noop}user123").roles("USER")
-                .and()
-                .withUser("admin").password("{noop}admin123").roles("ADMIN");
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/form").permitAll();
-//                .antMatchers("/form").authenticated()
-//                .and().formLogin()
-//                .loginPage("/login");
+                .antMatchers("/", "/register").permitAll()
+                //  .anyRequest().authenticated()
+                .antMatchers("/form").hasAnyRole("USER", "ADMIN")
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout().logoutSuccessUrl("/")
+                .permitAll();
+
     }
 }
