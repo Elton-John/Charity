@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div th:each="institution : ${institutions}">
+    <a th:href="@{/admin/institutions/edit/{id}(id=${institution.getId()})}" th:text="${institution.name}">institution</a>
+    <a th:href="@{/admin/institutions/confirm/{id}(id=${institution.getId()})}" >usuń</a>
+</div>
+<h1>
+<a th:href="@{/admin/institutions/add}">dodaj fundację</a></h1>
+</body>
+</html>

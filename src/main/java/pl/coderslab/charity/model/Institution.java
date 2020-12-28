@@ -15,6 +15,7 @@ public class Institution {
     private Long id;
     private String name;
     private String description;
+    private boolean archive;
     @OneToMany(mappedBy = "institution")
     private List<Donation> donations;
 }

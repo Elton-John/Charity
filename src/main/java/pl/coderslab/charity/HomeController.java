@@ -30,6 +30,6 @@ public class HomeController {
 
     @ModelAttribute("institutions")
     public List<Institution> institutions() {
-        return institutionRepository.findAll();
+        return institutionRepository.findAllActive();
     }
 }

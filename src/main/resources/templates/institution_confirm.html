@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+Fundacja <span th:text="${institution.name}"></span> zostanie zarchiwizowana.
+Nie będzie jej na liscie fundacji, pozostanie jednak w statystykach i historii.
+<a th:href="@{/admin/institutions}">wróć</a>
+<a th:href="@{/admin/institutions/delete/{id}(id=${institution.getId()})}">zarchiwizuj</a>
+</body>
+</html>

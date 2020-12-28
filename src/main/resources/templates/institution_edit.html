@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h2>Edycja</h2>
+<form th:method="post" th:action="@{/admin/institutions/edit}" th:object="${institution}">
+    <input type="hidden" th:field="*{id}" >
+    <label for="name">Nazwa:</label>
+    <input type="text" th:field="*{name}" id="name">
+
+    <label for="description">Opisanie:</label>
+    <input type="text" th:field="*{description}" id="description">
+
+    <input type="submit" value="zapisz">
+</form>
+</body>
+</html>
