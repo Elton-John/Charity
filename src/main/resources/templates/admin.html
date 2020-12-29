@@ -7,8 +7,10 @@
 <body>
 <div sec:authorize="isAuthenticated()">
     <span th:inline="text">Witaj, adminie [[${#httpServletRequest.remoteUser}]]!</span>
-
+<br>
     <a th:href="@{admin/institutions}">fundacje</a>
+    <br>
+    <a th:href="@{admin/all}">adminy</a>
 </div>
 </body>
 </html>
