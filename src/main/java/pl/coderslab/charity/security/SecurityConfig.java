@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import pl.coderslab.charity.exeptions.CustomAccessDeniedHandler;
 
 @Configuration
@@ -25,8 +26,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public AccessDeniedHandler accessDeniedHandler(){
+    public AccessDeniedHandler accessDeniedHandler() {
         return new CustomAccessDeniedHandler();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
+        return new MySimpleUrlAuthenticationSuccessHandler();
     }
 
     @Override
@@ -36,15 +42,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/register").not().fullyAuthenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-
-                //  .anyRequest().authenticated()
                 .antMatchers("/form").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/","/resources/**").permitAll()
-               // .anyRequest().authenticated()
+                .antMatchers("/", "/resources/**", "/css/**", "/images/**", "/favicon.io").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
+                //  .loginProcessingUrl("/login")
+                .successHandler(myAuthenticationSuccessHandler())
                 .permitAll()
                 .and()
                 .logout()
@@ -52,6 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .exceptionHandling().accessDeniedPage("/accessDenied");
+
 
     }
 }
