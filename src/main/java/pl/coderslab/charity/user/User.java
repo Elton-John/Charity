@@ -1,8 +1,9 @@
-package pl.coderslab.charity.security;
+package pl.coderslab.charity.user;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.coderslab.charity.security.Role;
 
 import javax.persistence.*;
 import java.util.Set;

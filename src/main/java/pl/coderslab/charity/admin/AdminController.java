@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.charity.dto.UserDto;
-import pl.coderslab.charity.security.User;
-import pl.coderslab.charity.security.UserServiceImpl;
+import pl.coderslab.charity.user.User;
+import pl.coderslab.charity.user.UserServiceImpl;
 
 import javax.validation.Valid;
 

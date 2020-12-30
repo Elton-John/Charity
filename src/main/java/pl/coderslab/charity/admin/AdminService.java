@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.dto.UserDto;
 import pl.coderslab.charity.security.Role;
 import pl.coderslab.charity.security.RoleRepository;
-import pl.coderslab.charity.security.User;
-import pl.coderslab.charity.security.UserRepository;
+import pl.coderslab.charity.user.User;
+import pl.coderslab.charity.user.UserRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Arrays;

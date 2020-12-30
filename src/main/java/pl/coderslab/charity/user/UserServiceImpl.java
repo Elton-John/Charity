@@ -1,8 +1,10 @@
-package pl.coderslab.charity.security;
+package pl.coderslab.charity.user;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.dto.UserDto;
+import pl.coderslab.charity.security.Role;
+import pl.coderslab.charity.security.RoleRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.nio.charset.StandardCharsets;

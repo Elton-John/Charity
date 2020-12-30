@@ -1,4 +1,4 @@
-package pl.coderslab.charity.admin;
+package pl.coderslab.charity.user;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
@@ -9,16 +9,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.coderslab.charity.admin.AdminService;
 import pl.coderslab.charity.dto.UserDto;
-import pl.coderslab.charity.security.User;
-import pl.coderslab.charity.security.UserServiceImpl;
+import pl.coderslab.charity.user.User;
+import pl.coderslab.charity.user.UserServiceImpl;
 
 import javax.validation.Valid;
 
 @Controller
 @AllArgsConstructor
 @Secured("ROLE_ADMIN")
-public class UserManageController {
+public class UserController {
 
     private UserServiceImpl userService;
     private AdminService adminService;
