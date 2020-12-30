@@ -85,6 +85,7 @@ public class AdminController {
         return "redirect:/admin/all";
     }
 
+
     @GetMapping("/admin/confirm/{id}")
     public String confirmDeleting(Model model, @PathVariable Long id) {
         model.addAttribute("admin", adminService.getOneOrThrow(id));
@@ -99,9 +100,4 @@ public class AdminController {
     }
 
 
-    @GetMapping("/admin/users")
-    public String userList(Model model) {
-        model.addAttribute("users", userService.allUsers());
-        return "admin";
-    }
 }

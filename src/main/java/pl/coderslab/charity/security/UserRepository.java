@@ -11,7 +11,10 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findByUsername(String username);
+
+    User findByUsernameAndArchivedIsFalse(String username);
+
+    List<User> findAllByArchivedFalse();
 
     @Query("SELECT u FROM User u JOIN FETCH u.roles r WHERE r.name = 'ROLE_ADMIN' ")
     List<User> findAllAdmins();

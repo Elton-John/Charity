@@ -5,10 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.charity.dto.UserDto;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,14 +24,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUserName(String username) {
-        return userRepository.findByUsername(username);
+        return userRepository.findByUsernameAndArchivedIsFalse(username);
     }
 
 
     @Override
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setEnabled(1);
+        user.setEnabled(true);
+        user.setArchived(false);
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
@@ -47,11 +46,51 @@ public class UserServiceImpl implements UserService {
 
 
     public List<User> allUsers() {
-        return userRepository.findAll();
+        return userRepository.findAllByArchivedFalse();
     }
 
 
     public UserDto getUserDtoOrThrow(Long id) {
         return userRepository.getUserDto(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+
+    public void update(UserDto userDto) {
+        User user = userRepository.getOne(userDto.getId());
+        user.setUsername(userDto.getUsername());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        userRepository.save(user);
+    }
+
+
+    public User getOneOrThrow(Long id) {
+        return userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+
+    public void disable(Long id) {
+        User user = userRepository.getOne(id);
+        user.setEnabled(false);
+        userRepository.save(user);
+    }
+
+
+    public void enable(Long id) {
+        User user = userRepository.getOne(id);
+        user.setEnabled(true);
+        userRepository.save(user);
+    }
+
+
+    public void delete(Long id) {
+        User user = userRepository.getOne(id);
+        byte[] array = new byte[7];
+        new Random().nextBytes(array);
+        String generatedString = new String(array, StandardCharsets.UTF_8);
+        user.setUsername(generatedString);
+        user.setPassword(generatedString);
+        user.setEnabled(false);
+        user.setArchived(true);
+        userRepository.save(user);
     }
 }

@@ -5,9 +5,9 @@
     <title></title>
 </head>
 <body>
-<h2>Edytuj dane administratora</h2>
+<h2>Edytuj dane użytkownika</h2>
 <p th:text="${errorMessage}"></p>
-<form th:action="@{/admin/edit}" th:method="post" th:object="${admin}">
+<form th:action="@{/admin/user/edit}" th:method="post" th:object="${user}">
     <input type="hidden" th:field="*{id}" >
     <div class="form-group">
         <input type="text" th:field="*{username}" placeholder="Nazwa użytkownika" />

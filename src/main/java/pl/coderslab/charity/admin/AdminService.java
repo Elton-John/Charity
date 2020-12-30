@@ -34,7 +34,7 @@ public class AdminService {
 
     public void saveAdmin(User admin) {
         admin.setPassword(passwordEncoder.encode(admin.getPassword()));
-        admin.setEnabled(1);
+        admin.setEnabled(true);
         Role userRole = roleRepository.findByName("ROLE_ADMIN");
         admin.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(admin);
@@ -47,6 +47,7 @@ public class AdminService {
         admin.setPassword(passwordEncoder.encode(adminDto.getPassword()));
         userRepository.save(admin);
     }
+
 
     public User getOneOrThrow(Long id) {
         return userRepository.findById(id).orElseThrow(EntityNotFoundException::new);

@@ -17,6 +17,7 @@
 
 <section class="login-page">
     <h2>Zaloguj się</h2>
+    <h5  th:text="${errorMessage}">tu error</h5>
     <form th:action="@{/login}" th:method="post" >
         <div class="form-group">
             <input type="text" name ="username" placeholder="Nazwa użytkownika"/>

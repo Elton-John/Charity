@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+Użytkownik <span th:text="${user.username}"></span> zostanie zarchiwizowany.
+<br>
+Konto zostanie zablokowane. Użytkownik nie będzie widoczny na liscie użytkowników,
+pozostanie jednak w statystykach i historii.
+<br>
+Dane osobowe zostaną zamienione na randomowy ciąg znaków.
+<br>
+Ten proces jest nieodwracalny.
+<br>
+<a th:href="@{/admin/user/all}">wróć</a>
+<br>
+<a th:href="@{/admin/user/delete/{id}(id=${user.getId()})}">zarchiwizuj</a>
+</body>
+</html>
