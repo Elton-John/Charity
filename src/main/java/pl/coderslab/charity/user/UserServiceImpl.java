@@ -1,7 +1,9 @@
 package pl.coderslab.charity.user;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.dto.UserDetailsDto;
 import pl.coderslab.charity.dto.UserDto;
 import pl.coderslab.charity.security.Role;
 import pl.coderslab.charity.security.RoleRepository;
@@ -94,5 +96,29 @@ public class UserServiceImpl implements UserService {
         user.setEnabled(false);
         user.setArchived(true);
         userRepository.save(user);
+    }
+
+    public UserDetailsDto getUserDetailsDto(String username) {
+        return userRepository.getUserDetailDto(username);
+    }
+
+    public void updateDetail(UserDetailsDto userDetailsDto) {
+        User user = userRepository.getOne(userDetailsDto.getId());
+        user.setName(userDetailsDto.getName());
+        user.setSurname(userDetailsDto.getSurname());
+        user.setEmail(userDetailsDto.getEmail());
+        userRepository.save(user);
+    }
+
+
+    public boolean changePassword(UserDetails customUser, String oldPassword, String newPassword) {
+        boolean oldPasswordMatches = passwordEncoder.matches(oldPassword, customUser.getPassword());
+        if (oldPasswordMatches) {
+            User user = userRepository.getOneByUsername(customUser.getUsername());
+            user.setPassword(passwordEncoder.encode(newPassword));
+            userRepository.save(user);
+            return true;
+        }
+        return false;
     }
 }

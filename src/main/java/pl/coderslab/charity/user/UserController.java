@@ -2,36 +2,37 @@ package pl.coderslab.charity.user;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.admin.AdminService;
+import pl.coderslab.charity.dto.UserDetailsDto;
 import pl.coderslab.charity.dto.UserDto;
-import pl.coderslab.charity.user.User;
-import pl.coderslab.charity.user.UserServiceImpl;
 
 import javax.validation.Valid;
 
 @Controller
 @AllArgsConstructor
-@Secured("ROLE_ADMIN")
+//@Secured("ROLE_ADMIN")
 public class UserController {
 
     private UserServiceImpl userService;
     private AdminService adminService;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-
+    @Secured("ROLE_ADMIN")
     @GetMapping("/admin/user/all")
     public String userList(Model model) {
         model.addAttribute("users", userService.allUsers());
         return "users";
     }
 
-
+    @Secured("ROLE_ADMIN")
     @GetMapping("/admin/user/edit/{id}")
     public String editInstitutionForm(Model model, @PathVariable Long id) {
 
@@ -40,7 +41,7 @@ public class UserController {
         return "user_edit";
     }
 
-
+    @Secured("ROLE_ADMIN")
     @PostMapping("/admin/user/edit")
     public String editInstitution(@ModelAttribute("user") @Valid UserDto userDto, BindingResult result, Model model) {
         if (result.hasErrors()) {
@@ -57,7 +58,7 @@ public class UserController {
         return "redirect:/admin/user/all";
     }
 
-
+    @Secured("ROLE_ADMIN")
     @GetMapping("/admin/user/ban/{id}")
     public String banUser(@PathVariable Long id) {
         User user = userService.getOneOrThrow(id);
@@ -69,17 +70,64 @@ public class UserController {
         return "redirect:/admin/user/all";
     }
 
-
+    @Secured("ROLE_ADMIN")
     @GetMapping("/admin/user/confirm/{id}")
     public String confirmDeleting(Model model, @PathVariable Long id) {
         model.addAttribute("user", userService.getOneOrThrow(id));
         return "user_confirm";
     }
 
-
+    @Secured("ROLE_ADMIN")
     @GetMapping("/admin/user/delete/{id}")
     public String deleteInstitution(@PathVariable Long id) {
         userService.delete(id);
         return "redirect:/admin/user/all";
+    }
+
+    @Secured("ROLE_USER")
+    @GetMapping("/profile")
+    public String profile(@AuthenticationPrincipal UserDetails customUser, Model model) {
+        model.addAttribute("userName", customUser.getUsername());
+        return "profile";
+    }
+
+    @Secured("ROLE_USER")
+    @GetMapping("/profile/edit")
+    public String editProfileForm(@AuthenticationPrincipal UserDetails customUser, Model model) {
+        model.addAttribute("user", userService.getUserDetailsDto(customUser.getUsername()));
+        return "profile_edit";
+    }
+
+    @Secured("ROLE_USER")
+    @PostMapping("/profile/edit")
+    public String editProfile(@ModelAttribute UserDetailsDto userDetailsDto) {
+        userService.updateDetail(userDetailsDto);
+        return "redirect:/profile";
+    }
+
+    @Secured("ROLE_USER")
+    @GetMapping("/profile/password/edit")
+    public String changePasswordForm(@AuthenticationPrincipal UserDetails customUser) {
+        if (customUser == null) {
+            return "redirect:/";
+        }
+        return "password_change";
+    }
+
+    @Secured("ROLE_USER")
+    @PostMapping("/profile/password/edit")
+    public String changePassword(@AuthenticationPrincipal UserDetails customUser,
+                                 Authentication authentication,
+                                 @RequestParam("oldPassword") String oldPassword,
+                                 @RequestParam("newPassword") String newPassword,
+                                 Model model) {
+
+        boolean changed = userService.changePassword(customUser, oldPassword, newPassword);
+        if (changed) {
+
+            return "password_change_success";
+        }
+        model.addAttribute("errorMessage", "coś poszło nie tak");
+        return "password_change";
     }
 }

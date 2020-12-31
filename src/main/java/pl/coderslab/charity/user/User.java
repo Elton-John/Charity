@@ -18,9 +18,10 @@ public class User {
     private Long id;
     @Column(nullable = false, unique = true, length = 60)
     private String username;
-    //   private String surname;
+    private String name;
+    private String surname;
     private String password;
-    //    private String email;
+    private String email;
     private boolean enabled;
     private boolean archived;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

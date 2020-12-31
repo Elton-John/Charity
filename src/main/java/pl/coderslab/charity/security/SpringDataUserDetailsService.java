@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import pl.coderslab.charity.user.CurrentUser;
+
 import pl.coderslab.charity.user.User;
 import pl.coderslab.charity.user.UserService;
 
@@ -38,21 +39,21 @@ public class SpringDataUserDetailsService implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String username) {
+    public CurrentUser loadUserByUsername(String username) {
         User user = userService.findByUserName(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
 
         }
-        if(!user.isEnabled()){
+        if (!user.isEnabled()) {
             throw new DisabledException("Konto zostało zablokowane przez administratora");
         }
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         user.getRoles().forEach(r ->
                 grantedAuthorities.add(new SimpleGrantedAuthority(r.getName())));
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(), user.getPassword(), grantedAuthorities);
+        return new CurrentUser(user.getUsername(), user.getPassword(),
+                grantedAuthorities, user);
     }
 
 }
