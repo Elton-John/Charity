@@ -82,6 +82,7 @@
 
         <form th:action="@{/form/confirmation}" th:method="post" th:object="${donation}">
             <!-- STEP 1: class .active is switching steps -->
+<!--            <input th:type="hidden" th:field="*{user}" th:value="${user}">-->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
                 <div th:each="category : ${categories}">

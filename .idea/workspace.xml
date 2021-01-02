@@ -2,20 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24125afa-1a3d-4266-bfdb-e800f5511657" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/admin/AdminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/dto/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin_confirm.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin_edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin_register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admins.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/donation/DonationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/dto/DonationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/user/UserConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/donation_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c135fb72-a695-4940-b585-cd708cd09e99.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c135fb72-a695-4940-b585-cd708cd09e99.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/admin/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/security/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/donation/DonationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/donation/DonationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/donation/DonationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/donation/DonationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Donation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/model/Donation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/charity/user/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +203,11 @@
       <workItem from="1608465558932" duration="10811000" />
       <workItem from="1609055669330" duration="14137000" />
       <workItem from="1609141825900" duration="10952000" />
-      <workItem from="1609227724953" duration="8616000" />
+      <workItem from="1609227724953" duration="13403000" />
+      <workItem from="1609265176211" duration="5063000" />
+      <workItem from="1609318264870" duration="8685000" />
+      <workItem from="1609412501287" duration="8522000" />
+      <workItem from="1609582326819" duration="8698000" />
     </task>
     <task id="LOCAL-00001" summary="Change jsp to thymeleaf">
       <created>1608365103661</created>
@@ -317,7 +321,49 @@
       <option name="project" value="LOCAL" />
       <updated>1609161241034</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add Admin CRUD.">
+      <created>1609238584489</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1609238584489</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Add redirection to different pages after login.">
+      <created>1609322197073</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1609322197073</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Add User CRUD (access only for admin)">
+      <created>1609325660964</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1609325660964</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Refactoring.">
+      <created>1609326393879</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1609326393879</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Add user's profile with personal data editing, access for users">
+      <created>1609422350336</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1609422350336</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Add password changing, fix bug">
+      <created>1609583966304</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1609583966304</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,7 +386,13 @@
     <MESSAGE value="Add institution CRUD, access only for admin." />
     <MESSAGE value="Add access denied error page." />
     <MESSAGE value="Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
+    <MESSAGE value="Add Admin CRUD." />
+    <MESSAGE value="Add redirection to different pages after login." />
+    <MESSAGE value="Add User CRUD (access only for admin)" />
+    <MESSAGE value="Refactoring." />
+    <MESSAGE value="Add user's profile with personal data editing, access for users" />
+    <MESSAGE value="Add password changing, fix bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add password changing, fix bug" />
   </component>
   <component name="WindowStateProjectService">
     <state x="428" y="124" width="800" height="677" key="#SQL_Dialects" timestamp="1608369362927">
@@ -355,70 +407,82 @@
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="530" y="267" width="596" height="390" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1533.873@67.27.1533.873" timestamp="1609229685682" />
+    <state x="641" y="175" width="374" height="575" key="#com.intellij.ide.util.MemberChooser" timestamp="1609323643209">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="641" y="175" width="374" height="575" key="#com.intellij.ide.util.MemberChooser/67.27.1533.873@67.27.1533.873" timestamp="1609323643209" />
     <state x="566" y="211" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1609230096522">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="566" y="211" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1533.873@67.27.1533.873" timestamp="1609230096522" />
-    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2" timestamp="1609161240949">
+    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2" timestamp="1609583965428">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2/67.27.1533.873@67.27.1533.873" timestamp="1609161240949" />
-    <state width="1487" height="75" key="GridCell.Tab.0.bottom" timestamp="1609237780004">
+    <state x="260" y="37" width="1137" height="850" key="CommitChangelistDialog2/67.27.1533.873@67.27.1533.873" timestamp="1609583965428" />
+    <state width="1487" height="176" key="GridCell.Tab.0.bottom" timestamp="1609590922853">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="75" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1609237780004" />
-    <state width="1487" height="75" key="GridCell.Tab.0.center" timestamp="1609237780003">
+    <state width="1487" height="176" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1609590922853" />
+    <state width="1487" height="176" key="GridCell.Tab.0.center" timestamp="1609590922852">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="75" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1609237780003" />
-    <state width="1487" height="75" key="GridCell.Tab.0.left" timestamp="1609237780003">
+    <state width="1487" height="176" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1609590922852" />
+    <state width="1487" height="176" key="GridCell.Tab.0.left" timestamp="1609590922852">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="75" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1609237780003" />
-    <state width="1487" height="75" key="GridCell.Tab.0.right" timestamp="1609237780003">
+    <state width="1487" height="176" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1609590922852" />
+    <state width="1487" height="176" key="GridCell.Tab.0.right" timestamp="1609590922852">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="75" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1609237780003" />
-    <state width="1487" height="75" key="GridCell.Tab.1.bottom" timestamp="1609237780005">
+    <state width="1487" height="176" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1609590922852" />
+    <state width="1487" height="176" key="GridCell.Tab.1.bottom" timestamp="1609590922853">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="75" key="GridCell.Tab.1.bottom/67.27.1533.873@67.27.1533.873" timestamp="1609237780005" />
-    <state width="1487" height="75" key="GridCell.Tab.1.center" timestamp="1609237780004">
+    <state width="1487" height="176" key="GridCell.Tab.1.bottom/67.27.1533.873@67.27.1533.873" timestamp="1609590922853" />
+    <state width="1487" height="176" key="GridCell.Tab.1.center" timestamp="1609590922853">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="75" key="GridCell.Tab.1.center/67.27.1533.873@67.27.1533.873" timestamp="1609237780004" />
-    <state width="1487" height="75" key="GridCell.Tab.1.left" timestamp="1609237780004">
+    <state width="1487" height="176" key="GridCell.Tab.1.center/67.27.1533.873@67.27.1533.873" timestamp="1609590922853" />
+    <state width="1487" height="176" key="GridCell.Tab.1.left" timestamp="1609590922853">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="75" key="GridCell.Tab.1.left/67.27.1533.873@67.27.1533.873" timestamp="1609237780004" />
-    <state width="1487" height="75" key="GridCell.Tab.1.right" timestamp="1609237780004">
+    <state width="1487" height="176" key="GridCell.Tab.1.left/67.27.1533.873@67.27.1533.873" timestamp="1609590922853" />
+    <state width="1487" height="176" key="GridCell.Tab.1.right" timestamp="1609590922853">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="75" key="GridCell.Tab.1.right/67.27.1533.873@67.27.1533.873" timestamp="1609237780004" />
-    <state width="1487" height="131" key="GridCell.Tab.2.bottom" timestamp="1609161561254">
+    <state width="1487" height="176" key="GridCell.Tab.1.right/67.27.1533.873@67.27.1533.873" timestamp="1609590922853" />
+    <state width="1487" height="46" key="GridCell.Tab.2.bottom" timestamp="1609587292449">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="131" key="GridCell.Tab.2.bottom/67.27.1533.873@67.27.1533.873" timestamp="1609161561254" />
-    <state width="1487" height="131" key="GridCell.Tab.2.center" timestamp="1609161561254">
+    <state width="1487" height="46" key="GridCell.Tab.2.bottom/67.27.1533.873@67.27.1533.873" timestamp="1609587292449" />
+    <state width="1487" height="46" key="GridCell.Tab.2.center" timestamp="1609587292448">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="131" key="GridCell.Tab.2.center/67.27.1533.873@67.27.1533.873" timestamp="1609161561254" />
-    <state width="1487" height="131" key="GridCell.Tab.2.left" timestamp="1609161561253">
+    <state width="1487" height="46" key="GridCell.Tab.2.center/67.27.1533.873@67.27.1533.873" timestamp="1609587292448" />
+    <state width="1487" height="46" key="GridCell.Tab.2.left" timestamp="1609587292448">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="131" key="GridCell.Tab.2.left/67.27.1533.873@67.27.1533.873" timestamp="1609161561253" />
-    <state width="1487" height="131" key="GridCell.Tab.2.right" timestamp="1609161561254">
+    <state width="1487" height="46" key="GridCell.Tab.2.left/67.27.1533.873@67.27.1533.873" timestamp="1609587292448" />
+    <state width="1487" height="46" key="GridCell.Tab.2.right" timestamp="1609587292449">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state width="1487" height="131" key="GridCell.Tab.2.right/67.27.1533.873@67.27.1533.873" timestamp="1609161561254" />
+    <state width="1487" height="46" key="GridCell.Tab.2.right/67.27.1533.873@67.27.1533.873" timestamp="1609587292449" />
     <state x="550" y="155" width="556" height="614" key="RollbackChangesDialog" timestamp="1608377344378">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="550" y="155" width="556" height="614" key="RollbackChangesDialog/67.27.1533.873@67.27.1533.873" timestamp="1608377344378" />
-    <state x="489" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1609150148709">
+    <state width="721" height="508" key="SwitcherDM" timestamp="1609269502014">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state x="489" y="290" key="com.intellij.ide.util.TipDialog/67.27.1533.873@67.27.1533.873" timestamp="1609150148709" />
+    <state width="721" height="508" key="SwitcherDM/67.27.1533.873@67.27.1533.873" timestamp="1609269502014" />
+    <state x="566" y="270" width="524" height="384" key="com.intellij.database.dbimport.ImportUtil.MyDialog" timestamp="1609590607341">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="566" y="270" width="524" height="384" key="com.intellij.database.dbimport.ImportUtil.MyDialog/67.27.1533.873@67.27.1533.873" timestamp="1609590607341" />
+    <state x="489" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1609582612014">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="489" y="290" key="com.intellij.ide.util.TipDialog/67.27.1533.873@67.27.1533.873" timestamp="1609582612014" />
     <state x="601" y="382" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608363251381">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
@@ -427,5 +491,26 @@
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="496" y="212" width="672" height="678" key="search.everywhere.popup/67.27.1533.873@67.27.1533.873" timestamp="1608449901254" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/charity/user/UserController.java</url>
+          <line>131</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/charity/user/UserController.java</url>
+          <line>126</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/charity/user/UserServiceImpl.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

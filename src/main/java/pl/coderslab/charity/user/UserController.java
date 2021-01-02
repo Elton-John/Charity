@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.admin.AdminService;
+import pl.coderslab.charity.donation.DonationService;
 import pl.coderslab.charity.dto.UserDetailsDto;
 import pl.coderslab.charity.dto.UserDto;
 
@@ -22,6 +23,7 @@ import javax.validation.Valid;
 public class UserController {
 
     private UserServiceImpl userService;
+    private DonationService donationService;
     private AdminService adminService;
     private final BCryptPasswordEncoder passwordEncoder;
 
@@ -86,14 +88,15 @@ public class UserController {
 
     @Secured("ROLE_USER")
     @GetMapping("/profile")
-    public String profile(@AuthenticationPrincipal UserDetails customUser, Model model) {
+    public String profile(@AuthenticationPrincipal CurrentUser customUser, Model model) {
         model.addAttribute("userName", customUser.getUsername());
+        model.addAttribute("donations", donationService.getAllByUser(customUser.getUser().getId()));
         return "profile";
     }
 
     @Secured("ROLE_USER")
     @GetMapping("/profile/edit")
-    public String editProfileForm(@AuthenticationPrincipal UserDetails customUser, Model model) {
+    public String editProfileForm(@AuthenticationPrincipal CurrentUser customUser, Model model) {
         model.addAttribute("user", userService.getUserDetailsDto(customUser.getUsername()));
         return "profile_edit";
     }
@@ -107,7 +110,7 @@ public class UserController {
 
     @Secured("ROLE_USER")
     @GetMapping("/profile/password/edit")
-    public String changePasswordForm(@AuthenticationPrincipal UserDetails customUser) {
+    public String changePasswordForm(@AuthenticationPrincipal CurrentUser customUser) {
         if (customUser == null) {
             return "redirect:/";
         }
@@ -120,7 +123,6 @@ public class UserController {
                                  @RequestParam("oldPassword") String oldPassword,
                                  @RequestParam("newPassword") String newPassword,
                                  Model model) {
-
         boolean changed = userService.changePassword(customUser, oldPassword, newPassword);
         if (changed) {
 

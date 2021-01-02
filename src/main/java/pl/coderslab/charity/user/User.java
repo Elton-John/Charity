@@ -3,9 +3,11 @@ package pl.coderslab.charity.user;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.security.Role;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -29,5 +31,7 @@ public class User {
             , joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+    @OneToMany(mappedBy = "user")
+    private List<Donation> donations;
 
 }
