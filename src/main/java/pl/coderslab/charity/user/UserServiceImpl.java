@@ -111,10 +111,10 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public boolean changePassword(UserDetails customUser, String oldPassword, String newPassword) {
-        boolean oldPasswordMatches = passwordEncoder.matches(oldPassword, customUser.getPassword());
+    public boolean changePassword(CurrentUser customUser, String oldPassword, String newPassword) {
+        User user = customUser.getUser();
+        boolean oldPasswordMatches = passwordEncoder.matches(oldPassword, user.getPassword());
         if (oldPasswordMatches) {
-            User user = userRepository.getOneByUsername(customUser.getUsername());
             user.setPassword(passwordEncoder.encode(newPassword));
             userRepository.save(user);
             return true;

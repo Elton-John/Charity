@@ -116,8 +116,7 @@ public class UserController {
 
     @Secured("ROLE_USER")
     @PostMapping("/profile/password/edit")
-    public String changePassword(@AuthenticationPrincipal UserDetails customUser,
-                                 Authentication authentication,
+    public String changePassword(@AuthenticationPrincipal CurrentUser customUser,
                                  @RequestParam("oldPassword") String oldPassword,
                                  @RequestParam("newPassword") String newPassword,
                                  Model model) {
