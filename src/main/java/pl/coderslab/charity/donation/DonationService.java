@@ -8,6 +8,7 @@ import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.user.User;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,7 +38,10 @@ public class DonationService {
 
     public List<Donation> getAllByUser(Long id) {
         List<Donation> donations = donationRepository.findAllByUserId(id);
-        return donations.stream().sorted((o1, o2) -> Boolean.compare(o1.isReceived(), o2.isReceived())).collect(Collectors.toList());
+        return donations.stream().sorted(Comparator.comparing(Donation::isReceived)
+                .thenComparing(Donation::getReceivedDate, Comparator.nullsFirst(Comparator.naturalOrder()))
+                .thenComparing(Donation::getCreatedOn, Comparator.nullsFirst(Comparator.naturalOrder())))
+                .collect(Collectors.toList());
     }
 
 

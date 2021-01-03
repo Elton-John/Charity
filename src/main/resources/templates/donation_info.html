@@ -9,6 +9,7 @@
 <table>
     <tr>
         <th>Id</th>
+        <th>Data</th>
         <th>Fundacja</th>
         <th>Ilość worków</th>
         <th>Data</th>
@@ -20,6 +21,7 @@
     <tr>
 
         <td th:text="${donation.id}">id</td>
+        <td th:text="${donation.createdOn}">created</td>
         <td th:text="${donation.institution.name}">institution</td>
         <td th:text="${donation.quantity}">quantity</td>
         <td th:text="${donation.pickUpDate}">data</td>

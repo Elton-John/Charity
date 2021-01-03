@@ -7,6 +7,7 @@ import pl.coderslab.charity.user.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -37,4 +38,11 @@ public class Donation {
     private boolean received;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate receivedDate;
+
+    private LocalDateTime createdOn;
+
+    @PrePersist
+    public void prePersist() {
+        createdOn = LocalDateTime.now();
+    }
 }
