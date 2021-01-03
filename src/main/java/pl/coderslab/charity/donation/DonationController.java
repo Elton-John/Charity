@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.charity.category.CategoryRepository;
 import pl.coderslab.charity.dto.DonationDto;
+import pl.coderslab.charity.dto.DonationReceiveFormDto;
 import pl.coderslab.charity.institution.InstitutionRepository;
 import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Institution;
@@ -48,10 +49,25 @@ public class DonationController {
     }
 
 
+    @GetMapping("/donation/receive/{id}")
+    public String receiveForm(@PathVariable Long id, Model model) {
+        model.addAttribute("donation", donationService.getDonationReceiveFormDtoOrThrow(id));
+        return "donation_receive";
+    }
+
+
+    @PostMapping("/donation/receive")
+    public String receive(@ModelAttribute("donation") DonationReceiveFormDto receiveFormDto) {
+        donationService.receive(receiveFormDto);
+        return "redirect:/donation/" + receiveFormDto.getId();
+    }
+
+
     @ModelAttribute("categories")
     public List<Category> categories() {
         return categoryRepository.findAll();
     }
+
 
     @ModelAttribute("institutions")
     public List<Institution> institutions() {

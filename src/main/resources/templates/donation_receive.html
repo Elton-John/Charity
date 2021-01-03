@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form th:action="@{/donation/receive}" th:method="post" th:object="${donation}">
+    <input type="hidden" th:field="*{id}">
+    <input type="date" th:field="*{receivedDate}">
+    <div class="form-group form-group--buttons">
+        <button type="button" class="btn prev-step">Wstecz</button>
+        <button type="submit" class="btn next-step">Zapisz</button>
+    </div>
+</form>
+</body>
+</html>

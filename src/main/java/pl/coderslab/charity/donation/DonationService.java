@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.dto.DonationDto;
+import pl.coderslab.charity.dto.DonationReceiveFormDto;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.user.User;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,5 +49,19 @@ public class DonationService {
 
     public Donation getOneOrThrow(Long id) {
         return donationRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+
+    public DonationReceiveFormDto getDonationReceiveFormDtoOrThrow(Long id) {
+        return donationRepository.getDonationReceiveFormDto(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+
+    public void receive(DonationReceiveFormDto dto) {
+        Donation donation = donationRepository.getOne(dto.getId());
+        donation.setReceivedDate(dto.getReceivedDate());
+        donation.setReceived(true);
+        donation.setUpdatedOn(LocalDateTime.now());
+        donationRepository.save(donation);
     }
 }

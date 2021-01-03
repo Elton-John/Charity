@@ -9,14 +9,16 @@
 <table>
     <tr>
         <th>Id</th>
-        <th>Data</th>
+        <th>Data utworzenia wpisu</th>
         <th>Fundacja</th>
         <th>Ilość worków</th>
-        <th>Data</th>
-        <th>Godzina</th>
+        <th>Kategorie</th>
+        <th>Planowana data odebrania</th>
+        <th>Planowana godzina odebrania</th>
         <th>Status</th>
         <th>Data odebrania</th>
-        <th>Kategorie</th>
+        <th>Potwierdź otbiór</th>
+
     </tr>
     <tr>
 
@@ -24,11 +26,13 @@
         <td th:text="${donation.createdOn}">created</td>
         <td th:text="${donation.institution.name}">institution</td>
         <td th:text="${donation.quantity}">quantity</td>
+        <td th:each="category : ${donation.getCategories()}"><span th:text="${category.name}"></span></td>
         <td th:text="${donation.pickUpDate}">data</td>
         <td th:text="${donation.pickUpTime}">time</td>
         <td th:text="${donation.isReceived()} ? 'odebrane' : 'nieodebrane'">receive status</td>
         <td th:text="${donation.isReceived()} ? ${donation.receivedDate} : 'czeka na odbiór'">receive status</td>
-        <td th:each="category : ${donation.getCategories()}"><span th:text="${category.name}"></span></td>
+        <td th:if="${donation.received}==false"><a th:href="@{/donation/receive/{id}(id=${donation.getId()})}"> potwierdź otbiór</a> </td>
+
 
     </tr>
 

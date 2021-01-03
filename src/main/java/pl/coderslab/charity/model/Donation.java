@@ -40,9 +40,15 @@ public class Donation {
     private LocalDate receivedDate;
 
     private LocalDateTime createdOn;
+    private LocalDateTime updatedOn;
 
     @PrePersist
     public void prePersist() {
         createdOn = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updatedOn = LocalDateTime.now();
     }
 }
