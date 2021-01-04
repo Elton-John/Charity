@@ -95,7 +95,7 @@ public class AdminController {
 
     @GetMapping("/admin/delete/{id}")
     public String deleteInstitution(@PathVariable Long id) {
-        adminService.delete(id);
+        adminService.revokeAdminRole(id);
         return "redirect:/admin/all";
     }
 

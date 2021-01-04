@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import pl.coderslab.charity.exeptions.CustomAccessDeniedHandler;
+import pl.coderslab.charity.exceptions.CustomAccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity

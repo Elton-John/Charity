@@ -54,7 +54,7 @@ public class AdminService {
     }
 
 
-    public void delete(Long id) {
+    public void revokeAdminRole(Long id) {
         User admin = getOneOrThrow(id);
         Set<Role> roles = admin.getRoles();
         roles.forEach(role -> {

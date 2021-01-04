@@ -1,4 +1,4 @@
-package pl.coderslab.charity.exeptions;
+package pl.coderslab.charity.exceptions;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;

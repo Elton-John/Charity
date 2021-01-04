@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -125,7 +126,7 @@ public class UserController {
                                  Model model) {
         boolean changed = userService.changePassword(customUser, oldPassword, newPassword);
         if (changed) {
-
+            SecurityContextHolder.clearContext();
             return "password_change_success";
         }
         model.addAttribute("errorMessage", "coś poszło nie tak");
