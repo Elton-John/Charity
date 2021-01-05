@@ -20,11 +20,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("SELECT u FROM User u JOIN FETCH u.roles r WHERE r.name = 'ROLE_ADMIN' ")
     List<User> findAllAdmins();
 
-    @Query("SELECT new pl.coderslab.charity.dto.UserDto(u.id, u.username, u.password) FROM User u WHERE u.id = :id")
+    @Query("SELECT new pl.coderslab.charity.dto.UserDto(u.id, u.username, u.password, u.email) FROM User u WHERE u.id = :id")
     Optional<UserDto> getUserDto(@Param("id") Long id);
 
     @Query("SELECT new pl.coderslab.charity.dto.UserDetailsDto(u.id, u.name, u.surname, u.email) FROM User u WHERE u.username = :username")
     UserDetailsDto getUserDetailDto(@Param ("username")String username);
 
     User getOneByUsername(String username);
+
+    User findByEmail(String email);
 }

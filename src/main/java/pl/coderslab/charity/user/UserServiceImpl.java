@@ -1,6 +1,6 @@
 package pl.coderslab.charity.user;
 
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.dto.UserDetailsDto;
@@ -13,10 +13,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, IUserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private VerificationTokenRepository tokenRepository;
+
 
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
                            BCryptPasswordEncoder passwordEncoder) {
@@ -35,7 +39,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setEnabled(true);
+        //user.setEnabled(true);
         user.setArchived(false);
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
@@ -120,5 +124,55 @@ public class UserServiceImpl implements UserService {
             return true;
         }
         return false;
+    }
+
+    //////////////////////////////////////////////
+
+    @Override
+    public User registerNewUserAccount(UserDto userDto)
+            throws UserAlreadyExistException {
+
+        if (emailExist(userDto.getEmail())) {
+            throw new UserAlreadyExistException(
+                    "There is an account with that email adress: "
+                            + userDto.getEmail());
+        }
+
+        User user = new User();
+      //  user.setFirstName(userDto.getFirstName());
+      //  user.setLastName(userDto.getLastName());
+        user.setUsername(userDto.getUsername());
+        user.setPassword(userDto.getPassword());
+        user.setEmail(userDto.getEmail());
+               Role userRole = roleRepository.findByName("ROLE_USER");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
+    }
+
+    private boolean emailExist(String email) {
+        return userRepository.findByEmail(email) != null;
+    }
+
+    @Override
+    public User getUser(String verificationToken) {
+        User user = tokenRepository.findByToken(verificationToken).getUser();
+        return user;
+    }
+
+    @Override
+    public VerificationToken getVerificationToken(String VerificationToken) {
+        return tokenRepository.findByToken(VerificationToken);
+    }
+
+    @Override
+    public void saveRegisteredUser(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public void createVerificationToken(User user, String token) {
+        VerificationToken myToken = new VerificationToken(token, user);
+        tokenRepository.save(myToken);
     }
 }

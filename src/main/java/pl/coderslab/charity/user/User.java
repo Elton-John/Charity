@@ -1,5 +1,6 @@
 package pl.coderslab.charity.user;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +14,8 @@ import java.util.Set;
 @Entity
 @Setter
 @Getter
-@NoArgsConstructor
+
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,4 +36,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Donation> donations;
 
+    public User() {
+        super();
+        this.enabled=false;
+    }
 }

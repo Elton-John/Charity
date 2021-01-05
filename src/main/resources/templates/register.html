@@ -16,12 +16,20 @@
 
     <section class="login-page">
       <h2>Załóż konto</h2>
-      <form th:action="@{/register}" th:method="post" th:object="${newUser}">
+      <h5  th:text="${message}">tu error</h5>
+<!--      <form th:action="@{/register}" th:method="post" th:object="${newUser}">-->
+        <form th:action="@{/register}" th:method="post" th:object="${user}">
         <div class="form-group">
           <input type="text" th:field="*{username}" placeholder="Nazwa użytkownika" />
+          <p  class="text-danger" th:errors="*{username}"></p>
+        </div>
+        <div class="form-group">
+          <input type="email" th:field="*{email}" placeholder="Email" />
+          <p  class="text-danger" th:errors="*{email}"></p>
         </div>
         <div class="form-group">
           <input type="password" th:field="*{password}" placeholder="Hasło" />
+          <p  class="text-danger" th:errors="*{password}"></p>
         </div>
 <!--        <div class="form-group">-->
 <!--          <input type="password" name="password2" placeholder="Powtórz hasło" />-->
