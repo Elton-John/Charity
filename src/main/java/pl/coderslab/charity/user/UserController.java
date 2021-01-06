@@ -16,6 +16,7 @@ import pl.coderslab.charity.donation.DonationService;
 import pl.coderslab.charity.dto.UserDetailsDto;
 import pl.coderslab.charity.dto.UserDto;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -131,5 +132,31 @@ public class UserController {
         }
         model.addAttribute("errorMessage", "coś poszło nie tak");
         return "password_change";
+    }
+
+
+    @GetMapping("/password/reset")
+    public String resetPasswordEmailForm(){
+        return "password_reset_email";
+    }
+
+
+    @PostMapping("/password/reset")
+    public String resetPasswordEmail(@RequestParam ("email") String email,
+                                     HttpServletRequest request,
+                                     Model model){
+       if (userService.emailExist(email)){
+           userService.sendResetPasswordToken(email, request);
+           return "password_reset_email";
+       }
+       model.addAttribute("message", "Nie istneje użytkownik z takim adresem email.");
+       return  "password_reset_email";
+
+    }
+
+    @GetMapping("/password/reset/new")
+    public String resetPasswordNewForm(@RequestParam ("token") String token){
+
+        return "password_reset_new";
     }
 }

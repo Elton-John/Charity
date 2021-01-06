@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
 
-                .antMatchers("/register", "/regitrationConfirm").not().fullyAuthenticated()
+                .antMatchers("/register", "/regitrationConfirm", "/password/reset").not().fullyAuthenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/form").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/", "/resources/**", "/css/**", "/images/**", "/favicon.io").permitAll()

@@ -1,32 +1,43 @@
 package pl.coderslab.charity.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.dto.UserDetailsDto;
 import pl.coderslab.charity.dto.UserDto;
+import pl.coderslab.charity.email.EmailService;
 import pl.coderslab.charity.security.Role;
 import pl.coderslab.charity.security.RoleRepository;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Service
+
 public class UserServiceImpl implements UserService, IUserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final EmailService emailService;
+
+
+    private final JavaMailSender mailSender;
 
     @Autowired
     private VerificationTokenRepository tokenRepository;
 
 
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
-                           BCryptPasswordEncoder passwordEncoder) {
+                           BCryptPasswordEncoder passwordEncoder, EmailService emailService, JavaMailSender mailSender) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.emailService = emailService;
+        this.mailSender = mailSender;
     }
 
 
@@ -139,18 +150,17 @@ public class UserServiceImpl implements UserService, IUserService {
         }
 
         User user = new User();
-      //  user.setFirstName(userDto.getFirstName());
-      //  user.setLastName(userDto.getLastName());
+
         user.setUsername(userDto.getUsername());
         user.setPassword(userDto.getPassword());
         user.setEmail(userDto.getEmail());
-               Role userRole = roleRepository.findByName("ROLE_USER");
+        Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
-    private boolean emailExist(String email) {
+    public boolean emailExist(String email) {
         return userRepository.findByEmail(email) != null;
     }
 
@@ -175,4 +185,35 @@ public class UserServiceImpl implements UserService, IUserService {
         VerificationToken myToken = new VerificationToken(token, user);
         tokenRepository.save(myToken);
     }
+
+    public void sendResetPasswordToken(String email, HttpServletRequest request) {
+        User user = userRepository.findByEmail(email);
+        String token = UUID.randomUUID().toString();
+        createVerificationToken(user, token);
+        String contextPath = request.getContextPath();
+        String message = contextPath + "/password/reset/new?token=" + token;
+        emailService.send(email, "Password reset", message);
+//        mailSender.send(constructResetTokenEmail(getAppUrl(request),
+//                request.getLocale(), token, user));
+    }
+
+
+//
+//    private SimpleMailMessage constructResetTokenEmail(
+//            String contextPath, Locale locale, String token, User user) {
+//        String url = contextPath + "/user/changePassword?token=" + token;
+//       // String message = messages.getMessage("message.resetPassword",
+//                null, locale);
+//        return constructEmail("Reset Password",  " \r\n" + url, user);
+//    }
+//
+//    private SimpleMailMessage constructEmail(String subject, String body,
+//                                             User user) {
+//        SimpleMailMessage email = new SimpleMailMessage();
+//        email.setSubject(subject);
+//        email.setText(body);
+//        email.setTo(user.getEmail());
+//        email.setFrom();
+//        return email;
+//    }
 }
