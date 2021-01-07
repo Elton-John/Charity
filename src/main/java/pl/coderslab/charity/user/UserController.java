@@ -2,32 +2,25 @@ package pl.coderslab.charity.user;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.charity.admin.AdminService;
 import pl.coderslab.charity.donation.DonationService;
 import pl.coderslab.charity.dto.UserDetailsDto;
 import pl.coderslab.charity.dto.UserDto;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
 @AllArgsConstructor
-//@Secured("ROLE_ADMIN")
 public class UserController {
 
     private UserServiceImpl userService;
     private DonationService donationService;
-    private AdminService adminService;
-    private final BCryptPasswordEncoder passwordEncoder;
+
 
     @Secured("ROLE_ADMIN")
     @GetMapping("/admin/user/all")
@@ -35,6 +28,7 @@ public class UserController {
         model.addAttribute("users", userService.allUsers());
         return "users";
     }
+
 
     @Secured("ROLE_ADMIN")
     @GetMapping("/admin/user/edit/{id}")
@@ -44,6 +38,7 @@ public class UserController {
         model.addAttribute("user", userDto);
         return "user_edit";
     }
+
 
     @Secured("ROLE_ADMIN")
     @PostMapping("/admin/user/edit")
@@ -61,6 +56,7 @@ public class UserController {
 
         return "redirect:/admin/user/all";
     }
+
 
     @Secured("ROLE_ADMIN")
     @GetMapping("/admin/user/ban/{id}")
@@ -81,12 +77,14 @@ public class UserController {
         return "user_confirm";
     }
 
+
     @Secured("ROLE_ADMIN")
     @GetMapping("/admin/user/delete/{id}")
     public String deleteInstitution(@PathVariable Long id) {
         userService.delete(id);
         return "redirect:/admin/user/all";
     }
+
 
     @Secured("ROLE_USER")
     @GetMapping("/profile")
@@ -95,6 +93,7 @@ public class UserController {
         model.addAttribute("donations", donationService.getAllByUser(customUser.getUser().getId()));
         return "profile";
     }
+
 
     @Secured("ROLE_USER")
     @GetMapping("/profile/edit")
@@ -110,6 +109,7 @@ public class UserController {
         return "redirect:/profile";
     }
 
+
     @Secured("ROLE_USER")
     @GetMapping("/profile/password/edit")
     public String changePasswordForm(@AuthenticationPrincipal CurrentUser customUser) {
@@ -118,6 +118,7 @@ public class UserController {
         }
         return "password_change";
     }
+
 
     @Secured("ROLE_USER")
     @PostMapping("/profile/password/edit")
@@ -134,29 +135,4 @@ public class UserController {
         return "password_change";
     }
 
-
-    @GetMapping("/password/reset")
-    public String resetPasswordEmailForm(){
-        return "password_reset_email";
-    }
-
-
-    @PostMapping("/password/reset")
-    public String resetPasswordEmail(@RequestParam ("email") String email,
-                                     HttpServletRequest request,
-                                     Model model){
-       if (userService.emailExist(email)){
-           userService.sendResetPasswordToken(email, request);
-           return "password_reset_email";
-       }
-       model.addAttribute("message", "Nie istneje użytkownik z takim adresem email.");
-       return  "password_reset_email";
-
-    }
-
-    @GetMapping("/password/reset/new")
-    public String resetPasswordNewForm(@RequestParam ("token") String token){
-
-        return "password_reset_new";
-    }
 }

@@ -1,44 +1,26 @@
 package pl.coderslab.charity.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.dto.UserDetailsDto;
 import pl.coderslab.charity.dto.UserDto;
-import pl.coderslab.charity.email.EmailService;
 import pl.coderslab.charity.security.Role;
 import pl.coderslab.charity.security.RoleRepository;
 
 import javax.persistence.EntityNotFoundException;
-import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Service
-
+@Transactional
+@AllArgsConstructor
 public class UserServiceImpl implements UserService, IUserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
-    private final EmailService emailService;
-
-
-    private final JavaMailSender mailSender;
-
-    @Autowired
     private VerificationTokenRepository tokenRepository;
-
-
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
-                           BCryptPasswordEncoder passwordEncoder, EmailService emailService, JavaMailSender mailSender) {
-        this.passwordEncoder = passwordEncoder;
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.emailService = emailService;
-        this.mailSender = mailSender;
-    }
 
 
     @Override
@@ -113,9 +95,11 @@ public class UserServiceImpl implements UserService, IUserService {
         userRepository.save(user);
     }
 
+
     public UserDetailsDto getUserDetailsDto(String username) {
         return userRepository.getUserDetailDto(username);
     }
+
 
     public void updateDetail(UserDetailsDto userDetailsDto) {
         User user = userRepository.getOne(userDetailsDto.getId());
@@ -160,9 +144,6 @@ public class UserServiceImpl implements UserService, IUserService {
         return userRepository.save(user);
     }
 
-    public boolean emailExist(String email) {
-        return userRepository.findByEmail(email) != null;
-    }
 
     @Override
     public User getUser(String verificationToken) {
@@ -170,15 +151,22 @@ public class UserServiceImpl implements UserService, IUserService {
         return user;
     }
 
+    public boolean emailExist(String email) {
+        return userRepository.findByEmail(email) != null;
+    }
+
+
     @Override
     public VerificationToken getVerificationToken(String VerificationToken) {
         return tokenRepository.findByToken(VerificationToken);
     }
 
+
     @Override
     public void saveRegisteredUser(User user) {
         userRepository.save(user);
     }
+
 
     @Override
     public void createVerificationToken(User user, String token) {
@@ -186,34 +174,4 @@ public class UserServiceImpl implements UserService, IUserService {
         tokenRepository.save(myToken);
     }
 
-    public void sendResetPasswordToken(String email, HttpServletRequest request) {
-        User user = userRepository.findByEmail(email);
-        String token = UUID.randomUUID().toString();
-        createVerificationToken(user, token);
-        String contextPath = request.getContextPath();
-        String message = contextPath + "/password/reset/new?token=" + token;
-        emailService.send(email, "Password reset", message);
-//        mailSender.send(constructResetTokenEmail(getAppUrl(request),
-//                request.getLocale(), token, user));
-    }
-
-
-//
-//    private SimpleMailMessage constructResetTokenEmail(
-//            String contextPath, Locale locale, String token, User user) {
-//        String url = contextPath + "/user/changePassword?token=" + token;
-//       // String message = messages.getMessage("message.resetPassword",
-//                null, locale);
-//        return constructEmail("Reset Password",  " \r\n" + url, user);
-//    }
-//
-//    private SimpleMailMessage constructEmail(String subject, String body,
-//                                             User user) {
-//        SimpleMailMessage email = new SimpleMailMessage();
-//        email.setSubject(subject);
-//        email.setText(body);
-//        email.setTo(user.getEmail());
-//        email.setFrom();
-//        return email;
-//    }
 }
