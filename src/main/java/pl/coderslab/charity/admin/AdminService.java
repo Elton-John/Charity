@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.dto.UserDto;
 import pl.coderslab.charity.security.Role;
 import pl.coderslab.charity.security.RoleRepository;
+import pl.coderslab.charity.user.CurrentUser;
 import pl.coderslab.charity.user.User;
 import pl.coderslab.charity.user.UserRepository;
 
@@ -54,7 +55,8 @@ public class AdminService {
     }
 
 
-    public void revokeAdminRole(Long id) {
+    public void revokeAdminRole( Long id) {
+
         User admin = getOneOrThrow(id);
         Set<Role> roles = admin.getRoles();
         roles.forEach(role -> {

@@ -2,6 +2,7 @@ package pl.coderslab.charity.admin;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.charity.dto.UserDto;
+import pl.coderslab.charity.user.CurrentUser;
 import pl.coderslab.charity.user.User;
 import pl.coderslab.charity.user.UserServiceImpl;
 
@@ -89,13 +91,19 @@ public class AdminController {
     @GetMapping("/admin/confirm/{id}")
     public String confirmDeleting(Model model, @PathVariable Long id) {
         model.addAttribute("admin", adminService.getOneOrThrow(id));
-        return "admin_confirm";
+        return "admin_revoke_confirm";
     }
 
 
     @GetMapping("/admin/delete/{id}")
-    public String deleteInstitution(@PathVariable Long id) {
-        adminService.revokeAdminRole(id);
+    public String deleteInstitution(@AuthenticationPrincipal CurrentUser customUser,
+                                    @PathVariable Long id,
+                                    Model model) {
+        if( customUser.getUser().getId().equals(id)){
+            model.addAttribute("message", "Próbujesz usunąć samego siebie. To nie jest możliwe");
+            return "admin_revoke_confirm";
+        }
+        adminService.revokeAdminRole( id);
         return "redirect:/admin/all";
     }
 

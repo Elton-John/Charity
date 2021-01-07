@@ -19,7 +19,7 @@ public class UserDto {
     @NotEmpty(message = "{username.notempty}")
     private String username;
     @NotEmpty(message = "{password.notempty}")
-    @Pattern(regexp ="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$", message = "{password.regex}")
+   // @Pattern(regexp ="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$", message = "{password.regex}")
     private String password;
     @NotEmpty(message = "{email.notempty}")
     @Email
