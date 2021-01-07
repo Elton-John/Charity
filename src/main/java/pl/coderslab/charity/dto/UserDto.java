@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Getter
 @Setter
@@ -15,9 +16,10 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class UserDto {
     private Long id;
-    @NotNull(message = "{password.notemty}")
+    @NotEmpty(message = "{username.notempty}")
     private String username;
-    @NotNull(message = "{password.notemty}")
+    @NotEmpty(message = "{password.notempty}")
+    @Pattern(regexp ="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$", message = "{password.regex}")
     private String password;
     @NotEmpty(message = "{email.notempty}")
     @Email
