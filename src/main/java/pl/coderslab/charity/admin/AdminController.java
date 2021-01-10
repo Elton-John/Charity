@@ -27,15 +27,17 @@ public class AdminController {
 
 
     @GetMapping("/admin")
-    public String cockpit() {
-        return "admin";
+    public String cockpit(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        model.addAttribute("admin", customUser.getUser());
+        return "admin_panel/panel";
     }
 
 
     @GetMapping("/admin/all")
-    public String adminList(Model model) {
+    public String adminList(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        model.addAttribute("admin", customUser.getUser());
         model.addAttribute("admins", adminService.getAll());
-        return "admins";
+        return "admin_panel/admins";
     }
 
 
