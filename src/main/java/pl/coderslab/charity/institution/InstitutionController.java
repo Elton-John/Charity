@@ -2,6 +2,7 @@ package pl.coderslab.charity.institution;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.charity.model.Institution;
+import pl.coderslab.charity.user.CurrentUser;
 
 @Controller
 @AllArgsConstructor
@@ -17,52 +19,53 @@ public class InstitutionController {
     private InstitutionService institutionService;
 
 
-    @GetMapping("admin/institutions")
-    public String institutionList(Model model) {
+    @GetMapping("admin/institution/all")
+    public String institutionList(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        model.addAttribute("admin", customUser.getUser());
         model.addAttribute("institutions", institutionService.getAllInstitutions());
-        return "institutions";
+        return "admin_panel/institutions/institution_all";
     }
 
 
-    @GetMapping("/admin/institutions/add")
+    @GetMapping("/admin/institution/add")
     public String addInstitutionForm(Model model) {
         model.addAttribute("institution", new Institution());
-        return "institution_add";
+        return "admin_panel/institutions/institution_add";
     }
 
 
-    @PostMapping("/admin/institutions/add")
+    @PostMapping("/admin/institution/add")
     public String addInstitution(@ModelAttribute Institution institution) {
         institutionService.create(institution);
-        return "redirect:/admin/institutions";
+        return "redirect:/admin/institution/all";
     }
 
-    @GetMapping("/admin/institutions/edit/{id}")
+    @GetMapping("/admin/institution/edit/{id}")
     public String editInstitutionForm(Model model, @PathVariable Long id) {
         Institution institution = institutionService.getOneOrThrow(id);
         model.addAttribute("institution", institution);
-        return "institution_edit";
+        return "admin_panel/institutions/institution_edit";
     }
 
 
-    @PostMapping("/admin/institutions/edit")
+    @PostMapping("/admin/institution/edit/{id}")
     public String editInstitution(@ModelAttribute Institution institution) {
         institutionService.save(institution);
-        return "redirect:/admin/institutions";
+        return "redirect:/admin/institution/all";
     }
 
 
-    @GetMapping("/admin/institutions/confirm/{id}")
+    @GetMapping("/admin/institution/confirm/{id}")
     public String confirmDeleting(Model model, @PathVariable Long id) {
         model.addAttribute("institution", institutionService.getOneOrThrow(id));
-        return "institution_confirm";
+        return "admin_panel/institutions/institution_confirm";
     }
 
 
-    @GetMapping("/admin/institutions/delete/{id}")
+    @GetMapping("/admin/institution/delete/{id}")
     public String deleteInstitution(@PathVariable Long id) {
         institutionService.delete(id);
-        return "redirect:/admin/institutions";
+        return "redirect:/admin/institution/all";
     }
 
 }

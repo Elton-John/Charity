@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<nav class="navbar sticky-top navbar-light bg-info text-light text-uppercase" th:fragment="admin_nav">
+    <div class="container-fluid">
+        <div> Jesteś zalogowany jako <span th:text="${admin.username}"></span></div>
+        <a class="navbar-brand" th:href="@{/admin/edit/{id}(id=${admin.getId()})}">Edycja profilu</a>
+        <a class="navbar-brand" th:href="@{/admin}">Start</a>
+        <a class="navbar-brand" th:href="@{/}">Landing page</a>
+
+        <form th:action="@{/logout}" method="post">
+            <button class="btn btn-outline-light" type="submit">Wyloguj</button>
+        </form>
+    </div>
+</nav>
+</body>
+</html>
