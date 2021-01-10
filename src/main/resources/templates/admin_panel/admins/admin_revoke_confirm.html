@@ -13,21 +13,10 @@
 </head>
 <body>
 <div class="text-center my-5">
-    <p>
-        Użytkownik <span th:text="${user.username}"></span> zostanie zarchiwizowany.
-    </p>
-    <p>
-        Konto zostanie zablokowane. Użytkownik nie będzie widoczny na liscie użytkowników,
-        pozostanie jednak w statystykach i historii.
-    </p>
-    <p>
-        Dane osobowe zostaną zamienione na randomowy ciąg znaków.
-        <br>
-        Ten proces jest nieodwracalny.
-    </p>
+Użytkownik <span th:text="${admin.username}"></span> straci uprawnienia administratora.
+<div th:text="${message}"></div>
     <input type="button" value="Wróć" onclick="history.back()" class="btn btn-info">
-
-    <a th:href="@{/admin/user/delete/{id}(id=${user.getId()})}" class="btn btn-danger">Zarchiwizuj</a>
+<a th:href="@{/admin/delete/{id}(id=${admin.getId()})}" class="btn btn-danger">odebrać uprawnienia</a>
 </div>
 
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
