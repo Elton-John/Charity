@@ -19,7 +19,7 @@ public class RegistrationListener implements
         ApplicationListener<OnRegistrationCompleteEvent> {
 
    // private IUserService service;
-    private UserServiceImpl service;
+    private UserService service;
     private MessageSource messages;
     private JavaMailSender mailSender;
 

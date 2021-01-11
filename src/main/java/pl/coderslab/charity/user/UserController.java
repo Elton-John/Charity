@@ -6,109 +6,49 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.charity.donation.DonationService;
-import pl.coderslab.charity.dto.UserDetailsDto;
-import pl.coderslab.charity.dto.UserDto;
-
-import javax.validation.Valid;
+import pl.coderslab.charity.dto.UserEditDto;
 
 @Controller
 @AllArgsConstructor
 public class UserController {
 
-    private UserServiceImpl userService;
+    private UserService userService;
     private DonationService donationService;
-
-
-    @Secured("ROLE_ADMIN")
-    @GetMapping("/admin/user/all")
-    public String userList(Model model) {
-        model.addAttribute("users", userService.allUsers());
-        return "users";
-    }
-
-
-    @Secured("ROLE_ADMIN")
-    @GetMapping("/admin/user/edit/{id}")
-    public String editInstitutionForm(Model model, @PathVariable Long id) {
-
-        UserDto userDto = userService.getUserDtoOrThrow(id);
-        model.addAttribute("user", userDto);
-        return "user_edit";
-    }
-
-
-    @Secured("ROLE_ADMIN")
-    @PostMapping("/admin/user/edit")
-    public String editInstitution(@ModelAttribute("user") @Valid UserDto userDto, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "user_edit";
-        } else {
-            User byUserName = userService.findByUserName(userDto.getUsername());
-            if (byUserName != null) {
-                model.addAttribute("errorMessage", "użytkownik z taką nazwą już istnieje");
-                return "user_edit";
-            }
-            userService.update(userDto);
-        }
-
-        return "redirect:/admin/user/all";
-    }
-
-
-    @Secured("ROLE_ADMIN")
-    @GetMapping("/admin/user/ban/{id}")
-    public String banUser(@PathVariable Long id) {
-        User user = userService.getOneOrThrow(id);
-        if (user.isEnabled()) {
-            userService.disable(id);
-        } else if (!user.isEnabled()) {
-            userService.enable(id);
-        }
-        return "redirect:/admin/user/all";
-    }
-
-    @Secured("ROLE_ADMIN")
-    @GetMapping("/admin/user/confirm/{id}")
-    public String confirmDeleting(Model model, @PathVariable Long id) {
-        model.addAttribute("user", userService.getOneOrThrow(id));
-        return "user_confirm";
-    }
-
-
-    @Secured("ROLE_ADMIN")
-    @GetMapping("/admin/user/delete/{id}")
-    public String deleteInstitution(@PathVariable Long id) {
-        userService.delete(id);
-        return "redirect:/admin/user/all";
-    }
 
 
     @Secured("ROLE_USER")
     @GetMapping("/profile")
     public String profile(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        model.addAttribute("user", userService.getUserEditDtoOrThrow(customUser.getUser().getId()));
         model.addAttribute("userName", customUser.getUsername());
-        model.addAttribute("donations", donationService.getAllByUser(customUser.getUser().getId()));
         return "profile";
     }
 
 
     @Secured("ROLE_USER")
-    @GetMapping("/profile/edit")
-    public String editProfileForm(@AuthenticationPrincipal CurrentUser customUser, Model model) {
-        model.addAttribute("user", userService.getUserDetailsDto(customUser.getUsername()));
-        return "profile_edit";
-    }
-
-    @Secured("ROLE_USER")
     @PostMapping("/profile/edit")
-    public String editProfile(@ModelAttribute UserDetailsDto userDetailsDto) {
-        userService.updateDetail(userDetailsDto);
+    public String editProfile(@ModelAttribute("user") UserEditDto userEditDto) {
+        User user = userService.getOneOrThrow(userEditDto.getId());
+        user.setName(userEditDto.getName());
+        user.setSurname(userEditDto.getSurname());
+        user.setEmail(userEditDto.getEmail());
+        userService.update(user);
         return "redirect:/profile";
     }
 
+    @Secured("ROLE_USER")
+    @GetMapping("/profile/donation/all")
+    public String donations(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        model.addAttribute("user", customUser.getUser());
+        model.addAttribute("userName", customUser.getUsername());
+        model.addAttribute("donations", donationService.getAllByUser(customUser.getUser().getId()));
+        return "profile_donation_all";
+    }
 
     @Secured("ROLE_USER")
     @GetMapping("/profile/password/edit")

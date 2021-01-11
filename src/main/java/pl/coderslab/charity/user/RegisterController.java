@@ -23,7 +23,7 @@ import java.util.Locale;
 @Controller
 @AllArgsConstructor
 public class RegisterController {
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
     ApplicationEventPublisher eventPublisher;
 

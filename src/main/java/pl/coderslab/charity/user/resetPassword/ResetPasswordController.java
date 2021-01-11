@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.charity.user.User;
-import pl.coderslab.charity.user.UserServiceImpl;
+import pl.coderslab.charity.user.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @AllArgsConstructor
 public class ResetPasswordController {
 
-    private UserServiceImpl userService;
+    private UserService userService;
     private final ResetPasswordService resetPasswordService;
 
 

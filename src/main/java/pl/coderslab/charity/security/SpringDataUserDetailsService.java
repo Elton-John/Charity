@@ -39,7 +39,7 @@ public class SpringDataUserDetailsService implements UserDetailsService {
 
     @Override
     public CurrentUser loadUserByUsername(String username) {
-        User user = userService.findByUserName(username);
+        User user = userService.getByUserName(username);
 
 
         if (user == null) {

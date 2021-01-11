@@ -64,4 +64,8 @@ public class DonationService {
         donation.setUpdatedOn(LocalDateTime.now());
         donationRepository.save(donation);
     }
+
+    public void save(Donation donation) {
+        donationRepository.save(donation);
+    }
 }

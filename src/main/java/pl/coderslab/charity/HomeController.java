@@ -10,7 +10,7 @@ import pl.coderslab.charity.donation.DonationRepository;
 import pl.coderslab.charity.email.EmailService;
 import pl.coderslab.charity.institution.InstitutionRepository;
 import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.user.UserServiceImpl;
+import pl.coderslab.charity.user.UserService;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class HomeController {
     private InstitutionRepository institutionRepository;
     private DonationRepository donationRepository;
     private EmailService emailService;
-    private UserServiceImpl userService;
+    private UserService userService;
 
 
     @RequestMapping("/")

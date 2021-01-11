@@ -13,6 +13,27 @@
         <div sec:authorize="hasRole('ROLE_ADMIN')">
             <a th:href="@{/admin}" class="btn btn--small btn--highlighted">Panel administratora</a>
         </div>
+
+        <nav sec:authorize="isAuthenticated()" class="container container--70">
+            <ul class="nav--actions">
+                <li class="logged-user">
+                    <div sec:authorize="isAuthenticated()">
+                        <span th:inline="text">Witaj, [[${#httpServletRequest.remoteUser}]]!</span>
+                    </div>
+                    <ul class="dropdown">
+                        <li><a th:href="@{/profile}">Profil</a></li>
+                        <li><a th:href="@{/profile/donation/all}">Moje zbiórki</a></li>
+                        <!--                    <li><a th:href="@{/logout}">Wyloguj</a></li>-->
+                        <li>
+                            <form th:action="@{/logout}" method="post">
+                                <input type="submit" value="Wyloguj"/>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
         <ul class="nav--actions" th:unless="${#authorization.expression('isAuthenticated()')}">
             <li><a th:href="@{/login}" class="btn btn--small btn--without-border">Zaloguj</a></li>
             <li><a th:href="@{/register}" class="btn btn--small btn--highlighted">Załóż konto</a></li>
@@ -98,55 +119,28 @@
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
             Możesz sprawdzić czym się zajmują.</p>
 
-        <ul class="help--slides-items">
+        <ul class="help--slides-items" th:each="institution,  index : ${institutions}">
 
-            <div th:each="institution,  instStat : ${institutions}">
+
+            <div th:if="${index.odd}">
                 <li>
                     <div class="col">
-                        <div th:if="${instStat.even}">
-                            <div class="title" th:text="${institution.name}">Fundacja</div>
-                            <div class="subtitle" th:text="${institution.description}">Cel i misja:</div>
-                        </div>
+
+                        <div class="title" th:text="${institution.name}">Fundacja</div>
+                        <div class="subtitle" th:text="${institution.description}">Cel i misja:</div>
                     </div>
+
 
                     <div class="col">
-                        <div th:if="${instStat.odd}">
-                            <div class="title" th:text="${institution.name}">Fundacja</div>
-                            <div class="subtitle" th:text="${institution.description}">Cel i misja:</div>
+                        <div th:if="${institutions.size()>index.index+1}">
+                            <div class="title" th:text="${institutions[index.index+1].name}">Fundacja</div>
+                            <div class="subtitle" th:text="${institutions[index.index+1].description}">Cel i misja:
+                            </div>
                         </div>
                     </div>
-
-
                 </li>
-
-
-                <!--          <li>-->
-                <!--            <div class="col">-->
-                <!--              <div class="title">Fundacja "Dbam o Zdrowie"</div>-->
-                <!--              <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>-->
-                <!--            </div>-->
-
-                <!--            <div class="col">-->
-                <!--              <div class="title">Fundacja "A kogo"</div>-->
-                <!--              <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>-->
-                <!--            </div>-->
-                <!--          </li>-->
-
-                <!--          <li>-->
-                <!--            <div class="col">-->
-                <!--              <div class="title">Fundacja “Dla dzieci"</div>-->
-                <!--              <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>-->
-                <!--            </div>-->
-                <!--            <div class="col">-->
-                <!--              <div class="title">Fundacja “Bez domu”</div>-->
-                <!--              <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>-->
-                <!--            </div>-->
-
-                <!--          </li>-->
             </div>
         </ul>
-
-
     </div>
 
 </section>

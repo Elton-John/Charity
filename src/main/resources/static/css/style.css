@@ -41,6 +41,15 @@ h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
+table th {
+  font-size: 15px;
+  text-transform: uppercase;
+ }
+
+table  {
+  font-size: 15px;
+}
+
 
 /* Grouping content
    ========================================================================== */
@@ -854,6 +863,14 @@ header.header--main-page {
   background-repeat: no-repeat;
   background-size: 70vw;
   height: 100vh;
+}
+
+header.header--not-main-page {
+  background-image: url(../images/header-bg.jpg);
+  background-position: bottom left -30vh;
+  background-repeat: no-repeat;
+  background-size: 50vw;
+  height: 70vh;
 }
 
 @media (min-width: 990px) and (max-width: 1230px) {
