@@ -29,7 +29,7 @@ public class UserProfileController {
     public String profile(@AuthenticationPrincipal CurrentUser customUser, Model model) {
         model.addAttribute("user", userService.getUserEditDtoOrThrow(customUser.getUser().getId()));
         model.addAttribute("userName", customUser.getUsername());
-        return "profile";
+        return "user_profile/profile";
     }
 
 
@@ -50,7 +50,7 @@ public class UserProfileController {
         model.addAttribute("user", customUser.getUser());
         model.addAttribute("userName", customUser.getUsername());
         model.addAttribute("donations", donationService.getAllByUser(customUser.getUser().getId()));
-        return "profile_donation_all";
+        return "user_profile/profile_donation_all";
     }
 
     @Secured("ROLE_USER")
@@ -59,7 +59,7 @@ public class UserProfileController {
         if (customUser == null) {
             return "redirect:/";
         }
-        return "password_change";
+        return "user_profile/password_change";
     }
 
 
@@ -72,10 +72,10 @@ public class UserProfileController {
         boolean changed = userService.changePassword(customUser, oldPassword, newPassword);
         if (changed) {
             SecurityContextHolder.clearContext();
-            return "password_change_success";
+            return "user_profile/password_change_success";
         }
         model.addAttribute("errorMessage", "coś poszło nie tak");
-        return "password_change";
+        return "user_profile/password_change";
     }
 
 }

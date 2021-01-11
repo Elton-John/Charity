@@ -6,32 +6,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.charity.dto.UserDto;
 import pl.coderslab.charity.model.User;
-import pl.coderslab.charity.user.*;
+import pl.coderslab.charity.user.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.Calendar;
 
 @Controller
 @AllArgsConstructor
 public class RegisterController {
+
     private final RegistrationService registrationService;
     private final UserService userService;
 
-    //  ApplicationEventPublisher eventPublisher;
-
-    private final Validator validator;
-
-    //  private IUserService service;
-
-    // private MessageSource messages;
 
     @GetMapping("/register")
     public String createUser(Model model) {
@@ -67,7 +59,7 @@ public class RegisterController {
 
     @GetMapping("/register/confirm")
     public String confirmRegistration
-            ( @RequestParam("token") String token) {
+            (@RequestParam("token") String token) {
 
         VerificationToken verificationToken;
         try {

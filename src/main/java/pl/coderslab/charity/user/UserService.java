@@ -118,7 +118,7 @@ public class UserService {
     }
 
     public void setTestAdminAndUsers() {
-        if (userRepository.findByEmail("nauka.dinosaurus@gmail.com") == null) {
+        if (userRepository.findByEmail("nauka@gmail.com") == null) {
 
             User user = new User();
             user.setUsername("admin");
@@ -138,7 +138,7 @@ public class UserService {
             user2.setName("Angelina");
             user2.setSurname("Jolie");
             user2.setEmail("olikdiz@mail.ru");
-            user2.setPassword(passwordEncoder.encode("000"));
+            user2.setPassword(passwordEncoder.encode("001"));
             user2.setEnabled(true);
             user2.setArchived(false);
             user2.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
@@ -149,7 +149,7 @@ public class UserService {
             user3.setName("Bill");
             user3.setSurname("Gates");
             user3.setEmail("user2@gmail.com");
-            user3.setPassword(passwordEncoder.encode("000"));
+            user3.setPassword(passwordEncoder.encode("002"));
             user3.setEnabled(true);
             user3.setArchived(false);
             user3.setRoles(new HashSet<Role>(Arrays.asList(userRole)));

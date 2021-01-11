@@ -31,7 +31,7 @@ public class DonationController {
         model.addAttribute("donation", new DonationDto());
         model.addAttribute("categories");
         model.addAttribute("institutions");
-        return "form";
+        return "user_profile/form";
     }
 
 
@@ -45,14 +45,14 @@ public class DonationController {
     @GetMapping("/donation/{id}")
     public String donationInfo(@PathVariable Long id, Model model) {
         model.addAttribute("donation", donationService.getOneOrThrow(id));
-        return "donation_info";
+        return "user_profile/donation_info";
     }
 
 
     @GetMapping("/donation/receive/{id}")
     public String receiveForm(@PathVariable Long id, Model model) {
         model.addAttribute("donation", donationService.getDonationReceiveFormDtoOrThrow(id));
-        return "donation_receive";
+        return "user_profile/donation_receive";
     }
 
 

@@ -31,10 +31,10 @@ public class ResetPasswordController {
                                      Model model) {
         if (userService.emailExist(email)) {
             resetPasswordService.sendResetPasswordToken(email, request);
-            return "password_reset_email_success";
+            return "password_reset/password_reset_email_success";
         }
         model.addAttribute("message", "Nie istneje użytkownik z takim adresem email.");
-        return "password_reset_email";
+        return "password_reset/password_reset_email";
 
     }
 
@@ -43,7 +43,7 @@ public class ResetPasswordController {
     public String resetPasswordNewForm(@RequestParam("token") String token, Model model) {
         if (resetPasswordService.tokenExist(token)) {
             model.addAttribute("token", token);
-            return "password_reset_new";
+            return "password_reset/password_reset_new";
         }
         return "redirect:/";
     }
@@ -56,7 +56,7 @@ public class ResetPasswordController {
                                    Model model) {
         if (!newPassword.equals(confirmPassword)) {
             model.addAttribute("message", "Hasła są różne");
-            return "password_reset_new";
+            return "password_reset/password_reset_new";
         }
 
         User user = resetPasswordService.getUser(token);
