@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.dto.DonationDto;
 import pl.coderslab.charity.dto.DonationReceiveFormDto;
 import pl.coderslab.charity.model.Donation;
-import pl.coderslab.charity.user.User;
+import pl.coderslab.charity.model.User;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;

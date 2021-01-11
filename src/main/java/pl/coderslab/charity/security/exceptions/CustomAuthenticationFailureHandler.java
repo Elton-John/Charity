@@ -1,4 +1,4 @@
-package pl.coderslab.charity.user;
+package pl.coderslab.charity.security.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

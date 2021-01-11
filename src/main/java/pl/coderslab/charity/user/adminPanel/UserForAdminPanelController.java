@@ -3,7 +3,6 @@ package pl.coderslab.charity.user.adminPanel;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.charity.dto.UserEditDto;
-import pl.coderslab.charity.user.CurrentUser;
-import pl.coderslab.charity.user.User;
+import pl.coderslab.charity.model.CurrentUser;
+import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.user.UserService;
 
 import javax.validation.Valid;
@@ -68,9 +67,9 @@ public class UserForAdminPanelController {
     public String banUser(@PathVariable Long id) {
         User user = userService.getOneOrThrow(id);
         if (user.isEnabled()) {
-            userService.disable(id);
+            userService.blockUserByAdmin(id);
         } else if (!user.isEnabled()) {
-            userService.enable(id);
+            userService.unblockUserByAdmin(id);
         }
         return "redirect:/admin/user/all";
     }
@@ -85,7 +84,7 @@ public class UserForAdminPanelController {
 
     @GetMapping("/admin/user/delete/{id}")
     public String deleteInstitution(@PathVariable Long id) {
-        userService.delete(id);
+        userService.archiveUser(id);
         return "redirect:/admin/user/all";
     }
 }

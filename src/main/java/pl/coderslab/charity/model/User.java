@@ -1,4 +1,4 @@
-package pl.coderslab.charity.user;
+package pl.coderslab.charity.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

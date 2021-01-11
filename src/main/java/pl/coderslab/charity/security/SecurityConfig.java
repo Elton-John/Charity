@@ -9,7 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import pl.coderslab.charity.exceptions.CustomAccessDeniedHandler;
+import pl.coderslab.charity.security.exceptions.CustomAccessDeniedHandler;
+import pl.coderslab.charity.security.exceptions.MySimpleUrlAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -40,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
 
-                .antMatchers("/register", "/regitrationConfirm", "/password/reset/**").not().fullyAuthenticated()
+                .antMatchers("/register/**",  "/password/reset/**").not().fullyAuthenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/form").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/", "/resources/**", "/css/**", "/images/**", "/favicon.io").permitAll()

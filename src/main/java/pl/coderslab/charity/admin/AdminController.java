@@ -10,8 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.dto.UserDto;
 import pl.coderslab.charity.dto.UserEditDto;
-import pl.coderslab.charity.user.CurrentUser;
-import pl.coderslab.charity.user.User;
+import pl.coderslab.charity.model.CurrentUser;
+import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.user.UserService;
 
 import javax.validation.Valid;

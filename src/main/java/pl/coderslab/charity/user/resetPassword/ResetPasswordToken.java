@@ -3,7 +3,7 @@ package pl.coderslab.charity.user.resetPassword;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.coderslab.charity.user.User;
+import pl.coderslab.charity.model.User;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

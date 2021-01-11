@@ -14,7 +14,7 @@ import pl.coderslab.charity.dto.DonationReceiveFormDto;
 import pl.coderslab.charity.institution.InstitutionRepository;
 import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.user.CurrentUser;
+import pl.coderslab.charity.model.CurrentUser;
 
 import java.util.List;
 

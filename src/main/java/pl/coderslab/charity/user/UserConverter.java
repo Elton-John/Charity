@@ -2,6 +2,7 @@ package pl.coderslab.charity.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
+import pl.coderslab.charity.model.User;
 
 public class UserConverter implements Converter<String, User> {
     @Autowired

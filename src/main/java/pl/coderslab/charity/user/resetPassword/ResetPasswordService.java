@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.email.EmailService;
-import pl.coderslab.charity.user.User;
+import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.user.UserRepository;
 
 import javax.servlet.http.HttpServletRequest;

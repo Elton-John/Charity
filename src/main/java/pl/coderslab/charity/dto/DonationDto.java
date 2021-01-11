@@ -7,7 +7,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.user.User;
+import pl.coderslab.charity.model.User;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

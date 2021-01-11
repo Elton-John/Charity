@@ -3,7 +3,6 @@ package pl.coderslab.charity.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
-import pl.coderslab.charity.user.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;

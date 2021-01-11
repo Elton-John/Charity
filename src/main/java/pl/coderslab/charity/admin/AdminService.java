@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.security.Role;
 import pl.coderslab.charity.security.RoleRepository;
-import pl.coderslab.charity.user.User;
+import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.user.UserRepository;
 
 import javax.persistence.EntityNotFoundException;

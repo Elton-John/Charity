@@ -1,4 +1,4 @@
-package pl.coderslab.charity.user;
+package pl.coderslab.charity.user.userProfile;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.charity.donation.DonationService;
 import pl.coderslab.charity.dto.UserEditDto;
+import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.CurrentUser;
+import pl.coderslab.charity.user.UserService;
 
 @Controller
 @AllArgsConstructor
-public class UserController {
+public class UserProfileController {
 
     private UserService userService;
     private DonationService donationService;

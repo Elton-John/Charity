@@ -1,4 +1,4 @@
-package pl.coderslab.charity.security;
+package pl.coderslab.charity.security.exceptions;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

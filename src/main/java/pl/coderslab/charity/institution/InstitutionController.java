@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.user.CurrentUser;
+import pl.coderslab.charity.model.CurrentUser;
 
 @Controller
 @AllArgsConstructor

@@ -1,6 +1,7 @@
-package pl.coderslab.charity.user;
+package pl.coderslab.charity.registration;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import pl.coderslab.charity.model.User;
 
 public interface VerificationTokenRepository
         extends JpaRepository<VerificationToken, Long> {
