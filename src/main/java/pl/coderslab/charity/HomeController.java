@@ -36,7 +36,7 @@ public class HomeController {
 
     @ModelAttribute("institutions")
     public List<Institution> institutions() {
-        return institutionRepository.findAllActive();
+        return institutionRepository.findAllByArchiveIsFalse();
     }
 
     @GetMapping("/email")

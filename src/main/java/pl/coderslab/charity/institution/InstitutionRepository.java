@@ -7,8 +7,10 @@ import pl.coderslab.charity.model.Institution;
 
 import java.util.List;
 
-@Repository
+
 public interface InstitutionRepository extends JpaRepository<Institution, Long> {
-    @Query("SELECT i FROM Institution i WHERE i.archive=false")
-    List<Institution> findAllActive();
+    //@Query("SELECT i FROM Institution i WHERE i.archive=false")
+    List<Institution> findAllByArchiveIsFalse();
+
+
 }

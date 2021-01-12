@@ -44,7 +44,7 @@
             <h1>Moje dary</h1>
             <div th:unless="${donations.size()!=0}">
                 <p>Nie masz jeszcze przekazanych darów. </p>
-                <p> <a class="btn" th:href="@{/form}">Przekarz swój pierwszy dar.</a> </p>
+                <p> <a class="btn" th:href="@{/form}">Przekaż swój pierwszy dar.</a> </p>
             </div>
             <div th:if="${donations.size()!=0}">
                 <table>

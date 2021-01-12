@@ -10,7 +10,7 @@ import pl.coderslab.charity.model.Donation;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+
 public interface DonationRepository extends JpaRepository<Donation, Long> {
 
 
@@ -18,7 +18,7 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     Integer countAllQuantity();
 
 
-    @Query("SELECT d FROM Donation d WHERE d.user.id = :id")
+  //  @Query("SELECT d FROM Donation d WHERE d.user.id = :id")
     List<Donation> findAllByUserId(@Param("id") Long id);
 
 

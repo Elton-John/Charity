@@ -16,7 +16,7 @@ public class InstitutionService {
 
 
     public List<Institution> getAllInstitutions() {
-        return institutionRepository.findAllActive();
+        return institutionRepository.findAllByArchiveIsFalse();
     }
 
 
