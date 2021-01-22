@@ -13,6 +13,7 @@ import pl.coderslab.charity.dto.DonationDto;
 import pl.coderslab.charity.dto.DonationReceiveFormDto;
 import pl.coderslab.charity.institution.InstitutionRepository;
 import pl.coderslab.charity.model.Category;
+import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.Institution;
 import pl.coderslab.charity.model.CurrentUser;
 
@@ -37,7 +38,17 @@ public class DonationController {
 
     @PostMapping("/form/confirmation")
     public String confirmation(@AuthenticationPrincipal CurrentUser currentUser, @ModelAttribute DonationDto donationDto) {
-        donationService.create(donationDto, currentUser.getUser());
+        Donation donation = new Donation();
+        donation.setCategories(donationDto.getCategories());
+        donation.setCity(donationDto.getCity());
+        donation.setInstitution(donationDto.getInstitution());
+        donation.setPickUpComment(donationDto.getPickUpComment());
+        donation.setPickUpDate(donationDto.getPickUpDate());
+        donation.setPickUpTime(donationDto.getPickUpTime());
+        donation.setQuantity(donationDto.getQuantity());
+        donation.setStreet(donationDto.getStreet());
+        donation.setZipCode(donationDto.getZipCode());
+        donationService.create(donation, currentUser.getUser());
         return "redirect:/";
     }
 

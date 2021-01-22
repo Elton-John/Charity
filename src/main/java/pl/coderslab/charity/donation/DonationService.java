@@ -21,17 +21,7 @@ public class DonationService {
     private final DonationRepository donationRepository;
 
 
-    public void create(DonationDto donationDto, User user) {
-        Donation donation = new Donation();
-        donation.setCategories(donationDto.getCategories());
-        donation.setCity(donationDto.getCity());
-        donation.setInstitution(donationDto.getInstitution());
-        donation.setPickUpComment(donationDto.getPickUpComment());
-        donation.setPickUpDate(donationDto.getPickUpDate());
-        donation.setPickUpTime(donationDto.getPickUpTime());
-        donation.setQuantity(donationDto.getQuantity());
-        donation.setStreet(donationDto.getStreet());
-        donation.setZipCode(donationDto.getZipCode());
+    public void create(Donation donation, User user) {
         donation.setUser(user);
         donation.setReceived(false);
         donationRepository.save(donation);
