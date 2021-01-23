@@ -1,27 +1,28 @@
 package pl.coderslab.charity.donation;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.User;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.sameInstance;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+@ExtendWith(MockitoExtension.class)
 class DonationServiceTest {
 
-    static DonationRepository donationRepository;
-    static DonationService donationService;
+    @Mock
+    private DonationRepository donationRepository;
 
-    @BeforeAll
-    static void setUp() {
-        donationRepository = mock(DonationRepository.class);
-        donationService = new DonationService(donationRepository);
-    }
+    @InjectMocks
+    private DonationService donationService;
+
 
     @DisplayName("Newly created donation has User set")
     @Test
